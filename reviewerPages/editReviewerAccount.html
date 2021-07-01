@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <title>Reviewer - Edit Account Details</title>
+</head>
+<body>
+    <header>
+        <a href="reviewerHome.html" class="logo">
+            <img src="../images/logo1.png" alt="CCMC Midwest">
+        </a>
+        <ul class="navigation">
+            <li><a href="reviewerHome.html">HOME</a></li>
+            <li><a href="toReview.html">REVIEW A PAPER</a></li>
+            <li><a href="reviewerAccount.html" style="background-color: white; color: black;">
+                YOUR ACCOUNT</a></li>
+            <li><a href="">LOGOUT</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="second-nav">
+            <ul class="breadcrumb">
+                <li><a href="reviewerHome.html">Home</a></li>
+                <li><a href="reviewerAccount.html">Current Account Details</a></li>
+                <li>Edit Account Details</li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="registration-page" style="margin-top: 20px">
+                <form action="#" method="post">
+                    <h1>Edit Account Details</h1>
+                    <hr><br>
+                    <div class="user-info">
+                        <div class="input-box">
+                            <label for="username">Username</label> <input type="text" name="username" placeholder ="Username">
+                            <label for="email">Email</label> <input type="email" name="email" placeholder="someone@email.com">
+                        </div>
+                        <div class="input-box">
+                            <label for="password">Password</label> <input type="password" name="password" placeholder="Password">
+                            <label for="confirmPassword">Confirm Password</label> <input type="password" name="confirmPassword" placeholder="Confirm Password">
+                        </div>
+                        <div class="input-box">
+                            <label for="firstName">Full Name</label><input type="text" name="firstName" placeholder="First Name">
+                            <input type="text" name="middleInitial" placeholder="MI">
+                            <input type="text" name="lastName" placeholder="Last Name">
+                        </div>
+                        <div class="input-box">
+                            <label for="affiliation"> Affiliation </label> <input type="text" name="affiliation" placeholder="Affiliation">
+                            <label for="department">Department</label> <input type="text" name="department" placeholder="Department">
+                        </div>
+                        <div class="input-box-address">
+                            <label for="address">Address</label> <input type="text" name="address" placeholder="Street Address">
+                            <input type="text" name="city" placeholder="City">
+                            <select id="state" name="state">
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AR">AR</option>	
+                                <option value="AZ">AZ</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DC">DC</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="IA">IA</option>	
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="MA">MA</option>
+                                <option value="MD">MD</option>
+                                <option value="ME">ME</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MO">MO</option>	
+                                <option value="MS">MS</option>
+                                <option value="MT">MT</option>
+                                <option value="NC">NC</option>	
+                                <option value="NE">NE</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>			
+                                <option value="NV">NV</option>
+                                <option value="NY">NY</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WI">WI</option>	
+                                <option value="WV">WV</option>
+                                <option value="WY">WY</option>
+                            </select>		
+                            <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code">
+                        </div>
+                        <div class="input-box">
+                            <label for="phone">Phone Number</label> <input type="text" id="phone" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                        
+                        <br><br><hr><br>
+                        <h1>Topics</h1><br>
+                        <div class="topics">
+                            
+                            <table>
+                            <input type="checkbox" id="algorithms" name="topics" value="Analysis of Algorithms">
+                            <label for="algorithms" class ="checkbox">Analysis of Algorithms</label>
+
+                            <input type="checkbox" id="applications" name="topics" value="Applications">
+                            <label for="applications">Applications</label> 
+
+                            <input type="checkbox" id="artificialIntelligence" name="topics" value="Artificial Intelligence">
+                            <label for="ai">Artificial Intelligence</label>         
+
+                            <input type="checkbox" id="" name="topics" value="Computer Engineering">
+                            <label for="cpe">Computer Engineering</label>   
+                            
+                            <input type="checkbox" id="curriculum" name="topics" value="Curriculum">
+                            <label for="curriculum">Curriculum</label> 
+
+                            <input type="checkbox" id="dataStructures" name="topics" value="Data Structures">
+                            <label for="dataStructures">Data Structures</label>
+                            
+                            <input type="checkbox" id="databases" name="topics" value="Databases">
+                            <label for="databases">Databases</label>  
+
+                            <input type="checkbox" id="distanceLearning" name="topics" value="Distance Learning">
+                            <label for="distanceLearning">Distance Learning</label> 
+
+                            <input type="checkbox" id="distributedSystems" name="topics" value="Distributed Systems">
+                            <label for="distributedSystems">Distributed Systems</label>
+
+                            <input type="checkbox" id="ethicalSocietalIssues" name="topics" value="Ethical Societal Issues">
+                            <label for="ethicalSocietalIssues">Ethical/Societal Issues</label>
+
+                            <input type="checkbox" id="firstYearComputing" name="topics" value="First Year Computing">
+                            <label for="firstYearComputing">First Year Computing</label>
+
+                            <input type="checkbox" id="genderIssues" name="topics" value="Gender Issues">
+                            <label for="genderIssues">Gender Issues</label> 
+
+                            <input type="checkbox" id="grantWriting" name="topics" value="Grant Writing">
+                            <label for="grantWriting">Grant Writing</label>
+
+                            <input type="checkbox" id="graphicsImageProcessing" name="topics" value="Graphics Image Processing">
+                            <label for="graphicsImageProcessing">Graphics Image Processing</label>
+
+                            <input type="checkbox" id="humanComputerInteraction" name="topics" value="Human Computer Interaction">
+                            <label for="humanComputerInteraction">Human Computer Interaction</label>
+
+                            <input type="checkbox" id="laboratoryEnvironments" name="topics" value="Laboratory Environments">
+                            <label for="laboratoryEnvironments">Laboratory Environments</label>
+                                
+                            <input type="checkbox" id="literacy" name="topics" value="Literacy">
+                            <label for="literacy">Literacy</label>
+
+                            <input type="checkbox" id="mathInComputing" name="topics" value="Mathematics in Computing">
+                            <label for="mathInComputing">Mathematics in Computing</label>
+
+                            <input type="checkbox" id="multimedia" name="topics" value="Multimedia">
+                            <label for="multimedia">Multimedia</label>    
+
+                            <input type="checkbox" id="networkDataCommunications" name="topics" value="Network Data Communications">
+                            <label for="networkDataCommunications">Networking/Data Communications</label>
+
+                            <input type="checkbox" id="nonMajorCourses" name="topics" value="NonMajor Courses">
+                            <label for="nonMajorCourses">Non-Major Courses</label>    
+
+                            <input type="checkbox" id="objectOrientedIssues" name="topics" value="Object Oriented Issues">
+                            <label for="objectOrientedIssues">Object Oriented Issues</label>
+
+                            <input type="checkbox" id="operatingSystems" name="topics" value="Operating Systems">
+                            <label for="operatingSystems">Operating Systems</label>
+
+                            <input type="checkbox" id="parallelProcessing" name="topics" value="Parallel Processing">
+                            <label for="parallelProcessing">Parallel Processing</label>
+                                
+                            <input type="checkbox" id="pedagogy" name="topics" value="Pedagogy">
+                            <label for="pedagogy">Pedagogy</label> 
+
+                            <input type="checkbox" id="programmingLanguages" name="topics" value="Programming Languages">
+                            <label for="programmingLanguages">Programming Languages</label>
+                                
+                            <input type="checkbox" id="research" name="topics" value="Research">
+                            <label for="research">Research</label>
+                                
+                            <input type="checkbox" id="security" name="topics" value="Security">
+                            <label for="security">Security</label>
+
+                            <input type="checkbox" id="softwareEngineering" name="topics" value="Software Engineering">
+                            <label for="softwareEngineering">Software Engineering</label>
+
+                            <input type="checkbox" id="systemsAnalysisDesign" name="topics" value="Systems Analysis Design">
+                            <label for="systemsAnalysisDesign">Systems Analysis and Design</label>
+
+                            <input type="checkbox" id="technologyClassroom" name="topics" value="Technology Classroom">
+                            <label for="technologyClassroom">Using Techonology in the Classroom</label>
+
+                            <input type="checkbox" id="webProgramming" name="topics" value="Web Programming">
+                            <label for="webProgramming">Web and Internet Programming</label>
+                            
+                            <input type="checkbox" id="other" name="topics">
+                            <label for="other">Other (Describe)</label> 
+                            <input type="text" id="other" name="topics" placeholder="Enter Other Topics" style="width: 60%; font-size: 18px; padding: 5px;">
+                            </table>
+                            <br>
+                        </div>
+                        <button type="submit">Confirm Changes</button>
+                    </div>
+                </form>
+                <p style="text-align: right;">No changes? <a href="reviewerAccount.html">Click here</a> to go back to your account.</p>
+            </div>
+        </div>
+    </main>    
+</body>
+</html>
+
