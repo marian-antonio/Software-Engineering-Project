@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+::placeholder{
+    color: #808080;
+}
+header{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100px;
+    padding: 0px;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
+    justify-content: space-between;
+    background: #16254C;
+}
+header .logo img{
+    float: left;
+    width: auto;
+    padding: 5px 10px;
+    height: 100px;
+    background: white;
+    border: 12px solid #16254C;
+}
+header .navigation{
+    float: right;
+    display: flex;
+    justify-content: center;
+    margin: 50px 10px;
+    color: white;
+}
+header .navigation li{
+    list-style-type: none;
+    letter-spacing: 2px;
+}
+header .navigation li a{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+    padding: 5px 20px;
+    font-size: 1.25em;
+}
+header .navigation li a:hover{
+    background: #fbaf33;
+    color: black;
+}
+/* header design end here */
+
+/* login page start here */
+main{
+    background-color: white;
+    margin-top: 100px;
+}
+main .login-page{
+    width: 350px;
+    margin: 150px auto;
+    align-self: center;
+    color: #16254C;
+}
+main .login-page h1{
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+main .login-page p{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+main .login-page p a{
+    padding-left: 5px;
+    font-weight: bolder;
+}
+main .login-page input{
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 10px 0;
+    border-top: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-bottom: 1px solid grey;
+    border-radius: 5px;
+}
+main .login-page .account-type{
+    margin: 25px auto;
+    text-align: center;
+    border: 2px dotted grey;
+    padding: 10px 10px 40px 10px;
+}
+main .login-page .account-type h2{
+    font-weight: bold;
+    margin: 20px 0 20px 0;
+    font-size: 20px;
+}
+main .login-page .account-type input[type="radio"]{
+    display: none;
+}
+main .login-page .account-type label{
+    background: #16254C;
+    color: white;
+    padding: 5px 15px;
+    margin: 5px 5px;
+    border-radius: 2px;
+    text-align: center;
+}
+main .login-page .account-type label:hover{
+    background:#274287;
+    color: white;
+    font-weight: bold;
+}
+main .login-page .account-type input[type="radio"]:checked+label{
+    background: #fbaf33;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+main .login-page button, .registration-page button{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, white, #C0C0C0);
+    border-color: #adadad;
+    letter-spacing: 2.5px;
+    font-style: bolder;
+}
+
+/* Registration choices page start here */
+main .registration-buttons-container{
+    background-color: white;
+    margin-top: 20%;
+}
+main .registration-buttons-container h1{
+    text-align: center;
+    margin: 35px;
+    font-size: 2.5em;
+}
+main .registration-buttons-container .registration-buttons{
+    float: center;
+    display: flex;
+    justify-content: center;
+    margin: 50px 10px;
+}
+main .registration-buttons-container .registration-buttons li{
+    list-style-type: none;
+}
+main .registration-buttons-container .registration-buttons li a button{
+    text-decoration: none;
+    background: #16254C;
+    color: white;
+    letter-spacing: 2px;
+    padding: 10px 50px;
+    font-size: 1.5em;
+    margin: 10px 50px;
+    border-radius: 10px;
+    font-weight: 500px;
+}
+main .registration-buttons-container .registration-buttons li a button:hover{
+    background: #fbaf33;
+    color: black;
+}
+
+/* main registration pages */
+main .registration-page {
+    width: 40%;
+    margin: 150px auto;
+    color: #16254C;
+}
+main .registration-page h1{
+    text-align: center;
+    padding: 10px;
+}
+main .registration-page p{
+    text-align: justify;
+    padding: 10px;
+    margin-bottom: 10px; 
+    line-height: 130%;
+}
+main .registration-page .user-info{
+    padding: 10px 0;
+}
+main .registration-page .user-info .input-box, .input-box-address{
+    display: block;
+    padding: 5px;
+    font-size: 16px;
+}
+main .registration-page .user-info .input-box input, .input-box-address input{
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 10px 0;
+    border-top: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-bottom: 1px solid grey;
+    border-radius: 5px;
+}
+main .registration-page .user-info .input-box label, .input-box-address label{
+    font-size: 20px;
+    display: block;
+    padding-top: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+main .registration-page .user-info .input-box input[name=firstName]{
+    width: 44%;
+}
+main .registration-page .user-info .input-box input[name=middleInitial]{
+    width: 10%;
+}
+main .registration-page .user-info .input-box input[name=lastName]{
+    width: 44%;
+}
+main .registration-page .user-info .input-box-address input[name="city"]{
+    width: 50%;
+}
+main .registration-page .user-info .input-box-address input[name="zipCode"]{
+    width: 33%;
+}
+main .registration-page select{
+    font-size: 16px;
+    width: 15%;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border-top: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-bottom: 1px solid grey;
+}
+
+main .topics{
+    padding: 10px 0;
+    display: block;
+    padding: 5px;
+    font-size: 18px;
+}
+
+/* main input[type="checkbox"] {
+    display: block;
+    min-width: 0;
+    width: auto;
+    text-align: left;
+    margin: 5px 0;
+} */
+
+main .registration-page input[type="checkbox"]+label{
+    display: block;
+    padding: 6px 0;
+    margin-top: -28px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+/* Styles for all pages after log in/registration */
+
+main .second-nav{
+    width: 90%;
+    margin: 150px auto 0 auto;
+    color: #16254C;
+    display: flex;
+}
+main .breadcrumb{
+    background-color: #16254C;
+    padding: 10px 20px;
+    list-style: none;
+}
+main .breadcrumb li{
+    font-size: 20px;
+    display: inline;
+    color: #fbaf33;
+}
+main .breadcrumb li a{
+    color: white;
+    text-decoration: none;
+}
+main .breadcrumb li a:hover{
+    text-decoration: underline;
+}
+main .breadcrumb li+li:before{
+    padding: 10px;
+    color: white;
+    content: "\00BB";
+}
+main .container{
+    width: 90%;
+    height: auto;
+    margin: 20px 5%;
+    padding: 40px 50px;
+    color: #16254C;
+    border: 5px groove rgb(167, 167, 167);
+    border-radius: 5px;
+}
+
+main .actions{
+    margin-top: 25px;
+}
+main .actions .multiple-buttons{
+    list-style-type: none;
+    margin: 10px auto;
+    justify-content: center;
+    float: center;
+    display: flex;
+}
+main .actions .multiple-buttons li a button{
+    text-decoration: none;
+    background: #16254C;
+    color: white;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    font-weight: 500px;
+}
+main .actions .multiple-buttons li a button:hover{
+    background: #fbaf33;
+    color: black;
+}
+
+/* table info */
+main .data-table{
+    margin: 50px;
+}
+main .data-table table{
+    width: 100%;
+    border: 2px solid #16254C;
+    border-collapse: collapse;
+    background-color: #E6F4F1;
+}
+main .data-table th, td{
+    padding: 15px, 20px;
+    border: 1px solid grey;
+    text-align: center;
+}
+main .data-table tr{
+    padding: 15px;
+    height: 30px;
+}
+main .data-table th{
+    padding: 12px 0;
+    background-color: #16254C;
+    color: white;
+}
+main .data-table tr:nth-child(odd){
+    background-color: #b2bdbb;
+}
+main .data-table tr:hover{
+    background-color: #fbaf33;
+    color: black;
+}main .data-table tr:hover a{
+    color: black;
+}
+
+main textarea{
+    width: 100%;
+    height: 100px;
+}
+
+main .account-details{
+    width: 70%;
+}
+main .account-details table{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 50px 20px;
+    
+}
+main .account-details tr, .account-details th, .account-details td{
+    border: none;
+    text-align: left;
+    font-size: 25px;
+}
+
+main .account-details table th:first-child,
+main .account-details table  td:first-child {
+    font-weight: bold;
+    text-align: right;
+}
+
+main .actions a button{
+    text-decoration: none;
+    background: #16254C;
+    color: white;
+    letter-spacing: 1.5px;
+    padding: 10px 30px;
+    margin-left: 50%;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+main .actions a button:hover{
+    background: #fbaf33;
+    color: black;
+    border: 3px solid black;
+}
