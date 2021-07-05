@@ -29,116 +29,137 @@
         <div class="container">
             <div class="page-content">
                 <h1>Paper Submission</h1>
+                <p>
+                    Click the 'Choose File' button to select the file you want to upload.
+                    Then, select the topics that describe your paper. Once you are finished,
+                    click 'Complete Submission' to submit your paper.
+                </p>
             </div>
             <div class="action">
                 <form action="#" method="post">
-                    <input type="file" id="paperUpload" name="paperUpload">
-                    <label for="">Paper Title</label>
-                    <input type="text" id="paperTitle" name="paperTitle" placeholder="Paper Title">
-                    <div class="topics">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><label for="" style="margin-right: 20px;">Paper Title</label></td>
+                            <td><input type="text" id="paperTitle" name="paperTitle" placeholder="Paper Title"></td>
+                        </tr>
+                        <tr>
+                            <td>Upload</td>                            
+                            <td><input type="file" id="paperUpload" name="paperUpload"></td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <div class="topics", style="margin-left: 15px;">
                         <table>
-                            <input type="checkbox" id="algorithms" name="topics" value="Analysis of Algorithms">
-                            <label for="algorithms" class ="checkbox">Analysis of Algorithms</label>
-
-                            <input type="checkbox" id="applications" name="topics" value="Applications">
-                            <label for="applications">Applications</label> 
-
-                            <input type="checkbox" id="artificialIntelligence" name="topics" value="Artificial Intelligence">
-                            <label for="ai">Artificial Intelligence</label>         
-
-                            <input type="checkbox" id="" name="topics" value="Computer Engineering">
-                            <label for="cpe">Computer Engineering</label>   
-                            
-                            <input type="checkbox" id="curriculum" name="topics" value="Curriculum">
-                            <label for="curriculum">Curriculum</label> 
-
-                            <input type="checkbox" id="dataStructures" name="topics" value="Data Structures">
-                            <label for="dataStructures">Data Structures</label>
-                            
-                            <input type="checkbox" id="databases" name="topics" value="Databases">
-                            <label for="databases">Databases</label>  
-
-                            <input type="checkbox" id="distanceLearning" name="topics" value="Distance Learning">
-                            <label for="distanceLearning">Distance Learning</label> 
-
-                            <input type="checkbox" id="distributedSystems" name="topics" value="Distributed Systems">
-                            <label for="distributedSystems">Distributed Systems</label>
-
-                            <input type="checkbox" id="ethicalSocietalIssues" name="topics" value="Ethical Societal Issues">
-                            <label for="ethicalSocietalIssues">Ethical/Societal Issues</label>
-
-                            <input type="checkbox" id="firstYearComputing" name="topics" value="First Year Computing">
-                            <label for="firstYearComputing">First Year Computing</label>
-
-                            <input type="checkbox" id="genderIssues" name="topics" value="Gender Issues">
-                            <label for="genderIssues">Gender Issues</label> 
-
-                            <input type="checkbox" id="grantWriting" name="topics" value="Grant Writing">
-                            <label for="grantWriting">Grant Writing</label>
-
-                            <input type="checkbox" id="graphicsImageProcessing" name="topics" value="Graphics Image Processing">
-                            <label for="graphicsImageProcessing">Graphics Image Processing</label>
-
-                            <input type="checkbox" id="humanComputerInteraction" name="topics" value="Human Computer Interaction">
-                            <label for="humanComputerInteraction">Human Computer Interaction</label>
-
-                            <input type="checkbox" id="laboratoryEnvironments" name="topics" value="Laboratory Environments">
-                            <label for="laboratoryEnvironments">Laboratory Environments</label>
-                                
-                            <input type="checkbox" id="literacy" name="topics" value="Literacy">
-                            <label for="literacy">Literacy</label>
-
-                            <input type="checkbox" id="mathInComputing" name="topics" value="Mathematics in Computing">
-                            <label for="mathInComputing">Mathematics in Computing</label>
-
-                            <input type="checkbox" id="multimedia" name="topics" value="Multimedia">
-                            <label for="multimedia">Multimedia</label>    
-
-                            <input type="checkbox" id="networkDataCommunications" name="topics" value="Network Data Communications">
-                            <label for="networkDataCommunications">Networking/Data Communications</label>
-
-                            <input type="checkbox" id="nonMajorCourses" name="topics" value="NonMajor Courses">
-                            <label for="nonMajorCourses">Non-Major Courses</label>    
-
-                            <input type="checkbox" id="objectOrientedIssues" name="topics" value="Object Oriented Issues">
-                            <label for="objectOrientedIssues">Object Oriented Issues</label>
-
-                            <input type="checkbox" id="operatingSystems" name="topics" value="Operating Systems">
-                            <label for="operatingSystems">Operating Systems</label>
-
-                            <input type="checkbox" id="parallelProcessing" name="topics" value="Parallel Processing">
-                            <label for="parallelProcessing">Parallel Processing</label>
-                                
-                            <input type="checkbox" id="pedagogy" name="topics" value="Pedagogy">
-                            <label for="pedagogy">Pedagogy</label> 
-
-                            <input type="checkbox" id="programmingLanguages" name="topics" value="Programming Languages">
-                            <label for="programmingLanguages">Programming Languages</label>
-                                
-                            <input type="checkbox" id="research" name="topics" value="Research">
-                            <label for="research">Research</label>
-                                
-                            <input type="checkbox" id="security" name="topics" value="Security">
-                            <label for="security">Security</label>
-
-                            <input type="checkbox" id="softwareEngineering" name="topics" value="Software Engineering">
-                            <label for="softwareEngineering">Software Engineering</label>
-
-                            <input type="checkbox" id="systemsAnalysisDesign" name="topics" value="Systems Analysis Design">
-                            <label for="systemsAnalysisDesign">Systems Analysis and Design</label>
-
-                            <input type="checkbox" id="technologyClassroom" name="topics" value="Technology Classroom">
-                            <label for="technologyClassroom">Using Techonology in the Classroom</label>
-
-                            <input type="checkbox" id="webProgramming" name="topics" value="Web Programming">
-                            <label for="webProgramming">Web and Internet Programming</label>
-                            
-                            <input type="checkbox" id="other" name="topics">
-                            <label for="other">Other (Describe)</label> 
-                            <input type="text" id="other" name="topics" placeholder="Enter Other Topics" style="width: 60%; font-size: 18px; padding: 5px;">
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <h1>Topics</h1><br>
+                            <tr>
+                                <td><input type="checkbox" id="analysisOfAlgorithms" name="analysisOfAlgorithms" value="1"></td>
+                                <td><label for="analysisOfAlgorithms" class ="checkbox">Analysis of Algorithms</label></td>
+                                <td><input type="checkbox" id="firstYearComputing" name="topics" value="First Year Computing"></td>
+                                <td><label for="firstYearComputing">First Year Computing</label></td>
+                                <td><input type="checkbox" id="objectOrientedIssues" name="topics" value="Object Oriented Issues"></td>
+                                <td><label for="objectOrientedIssues">Object Oriented Issues</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="applications" name="topics" value="Applications"></td>
+                                <td><label for="applications">Applications</label> </td>
+                                <td><input type="checkbox" id="genderIssues" name="topics" value="Gender Issues"></td>
+                                <td><label for="genderIssues">Gender Issues</label></td>
+                                <td><input type="checkbox" id="operatingSystems" name="topics" value="Operating Systems"></td>
+                                <td><label for="operatingSystems">Operating Systems</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="architecture" name="topics" value="architecture"></td>
+                                <td><label for="architecture">Architecture</label></td>
+                                <td><input type="checkbox" id="grantWriting" name="topics" value="Grant Writing"></td>
+                                <td><label for="grantWriting">Grant Writing</label></td>
+                                <td><input type="checkbox" id="parallelProcessing" name="topics" value="Parallel Processing"></td>
+                                <td><label for="parallelProcessing">Parallel Processing</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="artificialIntelligence" name="topics" value="Artificial Intelligence"></td>
+                                <td><label for="ai">Artificial Intelligence</label>       </td>
+                                <td><input type="checkbox" id="graphicsImageProcessing" name="topics" value="Graphics Image Processing"></td>
+                                <td><label for="graphicsImageProcessing">Graphics Image Processing</label></td>
+                                <td><input type="checkbox" id="pedagogy" name="topics" value="Pedagogy"></td>
+                                <td><label for="pedagogy">Pedagogy</label> </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="" name="topics" value="Computer Engineering"></td>
+                                <td><label for="cpe">Computer Engineering</label>   </td>
+                                <td><input type="checkbox" id="humanComputerInteraction" name="topics" value="Human Computer Interaction"></td>
+                                <td><label for="humanComputerInteraction">Human Computer Interaction</label></td>
+                                <td><input type="checkbox" id="programmingLanguages" name="topics" value="Programming Languages"></td>
+                                <td><label for="programmingLanguages">Programming Languages</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="curriculum" name="topics" value="Curriculum"></td>
+                                <td><label for="curriculum">Curriculum</label> </td>
+                                <td><input type="checkbox" id="laboratoryEnvironments" name="topics" value="Laboratory Environments"></td>
+                                <td><label for="laboratoryEnvironments">Laboratory Environments</label></td>
+                                <td><input type="checkbox" id="research" name="topics" value="Research"></td>
+                                <td><label for="research">Research</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="dataStructures" name="topics" value="Data Structures"></td>
+                                <td><label for="dataStructures">Data Structures</label></td>
+                                <td><input type="checkbox" id="literacy" name="topics" value="Literacy"></td>
+                                <td><label for="literacy">Literacy</label></td>
+                                <td><input type="checkbox" id="security" name="topics" value="Security"></td>
+                                <td><label for="security">Security</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="databases" name="topics" value="Databases"></td>
+                                <td><label for="databases">Databases</label>  </td>
+                                <td><input type="checkbox" id="mathInComputing" name="topics" value="Mathematics in Computing"></td>
+                                <td><label for="mathInComputing">Mathematics in Computing</label></td>
+                                <td><input type="checkbox" id="softwareEngineering" name="topics" value="Software Engineering"></td>
+                                <td><label for="softwareEngineering">Software Engineering</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="distanceLearning" name="topics" value="Distance Learning"></td>
+                                <td><label for="distanceLearning">Distance Learning</label> </td>
+                                <td><input type="checkbox" id="multimedia" name="topics" value="Multimedia"></td>
+                                <td><label for="multimedia">Multimedia</label></td>
+                                <td><input type="checkbox" id="systemsAnalysisDesign" name="topics" value="Systems Analysis Design"></td>
+                                <td><label for="systemsAnalysisDesign">Systems Analysis and Design</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="distributedSystems" name="topics" value="Distributed Systems"></td>
+                                <td><label for="distributedSystems">Distributed Systems</label></td>
+                                <td><input type="checkbox" id="networkDataCommunications" name="topics" value="Network Data Communications"></td>
+                                <td><label for="networkDataCommunications">Networking/Data Communications</label></td>
+                                <td><input type="checkbox" id="technologyClassroom" name="topics" value="Technology Classroom"></td>
+                                <td><label for="technologyClassroom">Using Techonology in the Classroom</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="ethicalSocietalIssues" name="topics" value="Ethical Societal Issues"></td>
+                                <td><label for="ethicalSocietalIssues">Ethical/Societal Issues</label></td>
+                                <td><input type="checkbox" id="nonMajorCourses" name="topics" value="NonMajor Courses"></td>
+                                <td><label for="nonMajorCourses">Non-Major Courses</label></td>
+                                <td><input type="checkbox" id="webProgramming" name="topics" value="Web Programming"></td>
+                                <td><label for="webProgramming">Web and Internet Programming</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="other" name="topics"></td>
+                                <td><label for="other">Other</label> </td>
+                            </tr>
                         </table>
-                        <button type="submit">Complete Submission</button>
+                        <textarea name="otherDescription" form="reviewForm" placeholder="If other is selected, describe other topics here..."></textarea>
+                        <br>
                     </div>
+                    <div class="submit-button", style="margin-left: 20px; margin-bottom: 20px;"><button type="submit">SUBMIT PAPER</button></div>
                 </form>
             </div>
         </div>
