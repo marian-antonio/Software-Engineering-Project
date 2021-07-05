@@ -59,7 +59,7 @@ main{
     margin-top: 100px;
 }
 main .login-page{
-    width: 350px;
+    width: 400px;
     margin: 150px auto;
     align-self: center;
     color: #16254C;
@@ -69,20 +69,23 @@ main .login-page h1{
     text-align: center;
     margin: 20px 0;
 }
-
 main .login-page p{
     font-size: 15px;
     margin-bottom: 10px;
+    text-align: center;
 }
-
 main .login-page p a{
-    padding-left: 5px;
     font-weight: bolder;
+}
+main .login-page .input-label{
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px 5px;
 }
 main .login-page input{
     font-size: 16px;
     width: 100%;
-    padding: 10px 5px;
+    padding: 10px;
     margin: 10px 0;
     border-top: 1px solid lightgrey;
     border-left: 1px solid lightgrey;
@@ -123,7 +126,6 @@ main .login-page .account-type input[type="radio"]:checked+label{
     font-weight: bold;
     border: 2px solid black;
 }
-
 main .login-page button, .registration-page button{
     font-size: 16px;
     font-weight: bold;
@@ -132,27 +134,40 @@ main .login-page button, .registration-page button{
     width: 100%;
     padding: 10px 5px;
     border-radius: 10px;
-    background-image: linear-gradient(to bottom right, white, #C0C0C0);
+    background-color: #16254C;
+    color: white;
     border-color: #adadad;
     letter-spacing: 2.5px;
     font-style: bolder;
 }
+main .login-page button:hover, .registration-page button:hover{
+    background-color: #fbaf33;
+    color: black;
+}
 
 /* Registration choices page start here */
 main .registration-buttons-container{
+    width: 90%;
     background-color: white;
-    margin-top: 20%;
+    margin: 20% auto;
+    color: #16254C;
 }
 main .registration-buttons-container h1{
     text-align: center;
-    margin: 35px;
     font-size: 2.5em;
+    padding: 20px;
+}
+main .registration-buttons-container p{
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
 }
 main .registration-buttons-container .registration-buttons{
     float: center;
     display: flex;
     justify-content: center;
-    margin: 50px 10px;
+    margin: 20px 10px;
 }
 main .registration-buttons-container .registration-buttons li{
     list-style-type: none;
@@ -243,29 +258,21 @@ main .registration-page select{
     border-right: 1px solid lightgrey;
     border-bottom: 1px solid grey;
 }
-
 main .topics{
     padding: 10px 0;
     display: block;
     padding: 5px;
     font-size: 18px;
+    font-weight: 600;
+}
+main .topics input[type="checkbox"]{
+    transform: scale(1.5);
+}
+main .topics table tr, .topics table td{
+    padding-right: 15px;
+    padding-bottom: 10px;
 }
 
-/* main input[type="checkbox"] {
-    display: block;
-    min-width: 0;
-    width: auto;
-    text-align: left;
-    margin: 5px 0;
-} */
-
-main .registration-page input[type="checkbox"]+label{
-    display: block;
-    padding: 6px 0;
-    margin-top: -28px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-}
 
 /* Styles for all pages after log in/registration */
 
@@ -297,6 +304,7 @@ main .breadcrumb li+li:before{
     color: white;
     content: "\00BB";
 }
+
 main .container{
     width: 90%;
     height: auto;
@@ -305,6 +313,13 @@ main .container{
     color: #16254C;
     border: 5px groove rgb(167, 167, 167);
     border-radius: 5px;
+}
+
+main .page-content p{
+    font-size: 20px;
+    padding: 30px 10px;
+    text-align: justify;
+    padding-bottom: 10px;
 }
 
 main .actions{
@@ -343,8 +358,8 @@ main .data-table table{
     border-collapse: collapse;
     background-color: #E6F4F1;
 }
-main .data-table th, td{
-    padding: 15px, 20px;
+main .data-table th, .data-table td{
+    padding: 5px, 10px;
     border: 1px solid grey;
     text-align: center;
 }
@@ -356,6 +371,7 @@ main .data-table th{
     padding: 12px 0;
     background-color: #16254C;
     color: white;
+    font-weight: 500;
 }
 main .data-table tr:nth-child(odd){
     background-color: #b2bdbb;
@@ -363,13 +379,77 @@ main .data-table tr:nth-child(odd){
 main .data-table tr:hover{
     background-color: #fbaf33;
     color: black;
-}main .data-table tr:hover a{
+}
+main .data-table tr:hover a{
     color: black;
 }
+main .data-table td:hover{
+    border: 2px solid #16254C;
+}
 
+main .reports-container{
+    width: 97%;
+    height: auto;
+    margin: 10px;
+    padding: 40px 50px;
+    color: #16254C;
+
+}
+main .reports{
+    margin: 10px;
+    padding: 0px;
+    font-size: 14px;
+}
+main .data-table .reports table{
+    font-size: 14px;
+}
+main .reports table th, .reports table td{
+    text-align: left;
+    padding: 1px 5px;
+}
+main .data-table .comments-title{
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 18px;
+}
 main textarea{
     width: 100%;
     height: 100px;
+    margin: 10px 0;
+    margin-bottom: 50px;
+    padding: 8px;
+    font-size: 16px;
+}
+main .data-table h2{
+    padding-bottom: 10px;
+    font-size: 30px;
+}
+main .data-table hr{
+    margin: 20px 0;
+    border: 0.1em solid grey;
+}
+main .data-table .submit-button{
+    margin-left: 45%;
+    margin-top: 20px;
+}
+main .submit-button{
+    margin-left: 50%;
+}
+main .submit-button button{
+    text-decoration: none;
+    background: #16254C;
+    color: white;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: 500px;
+}
+
+main .submit-button button:hover{
+    background: #fbaf33;
+    color: black;
 }
 
 main .account-details{
@@ -389,10 +469,12 @@ main .account-details tr, .account-details th, .account-details td{
 }
 
 main .account-details table th:first-child,
-main .account-details table  td:first-child {
+main .account-details table td:first-child 
+{
     font-weight: bold;
     text-align: right;
 }
+
 
 main .actions a button{
     text-decoration: none;
@@ -411,3 +493,23 @@ main .actions a button:hover{
     color: black;
     border: 3px solid black;
 }
+main .reports .actions a button{
+    margin-left: auto;
+}
+main .reports table:nth-last-child(){
+    word-spacing: 10px;
+}
+.fas{
+    color:#16254C;
+}
+.far{
+    color:#16254C
+}
+main button .fas{
+    color:white;
+}
+main button:hover .fas{
+    color:black;
+}
+
+
