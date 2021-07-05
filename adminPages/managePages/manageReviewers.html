@@ -3,8 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width", initial-scale=1">
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/e1b93c3ea7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style.css" type="text/css">
-    <title>Admin - Authors</title>
+    <title>Admin - Manage Reviewers</title>
 </head>
 <body>
     <header>
@@ -13,9 +14,9 @@
         </a>
         <ul class="navigation">
             <li><a href="../adminHome.html">HOME</a></li>
-            <li><a href="../adminManage.html">ADMIN</a></li>
-            <li><a href="../adminReports.html" style="background-color: white; color: black;">
-                REPORTS</a></li>
+            <li><a href="../adminManage.html" style="background-color: white; color: black;">
+                ADMIN</a></li>
+            <li><a href="../adminReports.html">REPORTS</a></li>
             <li><a href="">LOGOUT</a></li>
         </ul>
     </header>
@@ -25,16 +26,19 @@
             <div class="second-nav">
                 <ul class="breadcrumb">
                     <li><a href="../adminHome.html">Home</a></li>
-                    <li><a href="../adminReports.html">Reports</a></li>
-                    <li>Authors</li>
+                    <li><a href="../adminManage.html">Manage</a></li>
+                    <li>Manage Reviewers</li>
                 </ul>
             </div>
-                        
+            
             <div class="reports-container">
                 <div class="page-content">
-                    <h1>Authors</h1>
+                    <h1>Table Maintenance - Authors</h1>
                     <p>
-                        This is an auto-generated report based on the current table of authors.
+                        This is a table of all the reviewers currently registered to review papers.
+                        Here, you can manually add new reviewers, edit the current data fields, or
+                        delete it entirely. Under the "actions" column pen and notepad icon 
+                        lets you edit that row, and the trashcan icon lets you delete that row.
                     </p>
                 </div>
                 
@@ -54,6 +58,8 @@
                                 <th>ZipCode</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Password</th>
+                                <th>Actions</th>
                             </tr>
                             <tr>
                                 <td>123456</td>
@@ -68,6 +74,11 @@
                                 <td>41099</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>cchandler@nku.edu</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr>
                             <tr>
                                 <td>123457</td>
@@ -82,6 +93,11 @@
                                 <td>43023</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>jjackson@denison.edu</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr>
                             <tr>
                                 <td>123458</td>
@@ -96,6 +112,11 @@
                                 <td>60305</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>mminard@dom.edu</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr>
                             <tr>
                                 <td>000000</td>
@@ -110,6 +131,11 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr>
                             <tr>
                                 <td>000000</td>
@@ -124,6 +150,11 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr><tr>
                                 <td>000000</td>
                                 <td>SampleF</td>
@@ -137,6 +168,11 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr><tr>
                                 <td>000000</td>
                                 <td>SampleF</td>
@@ -150,6 +186,11 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr><tr>
                                 <td>000000</td>
                                 <td>SampleF</td>
@@ -163,6 +204,11 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr><tr>
                                 <td>000000</td>
                                 <td>SampleF</td>
@@ -176,7 +222,13 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
-                            </tr><tr>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>000000</td>
                                 <td>SampleF</td>
                                 <td>S</td>
@@ -189,49 +241,19 @@
                                 <td>12345</td>
                                 <td>XXX-XXX-XXXX</td>
                                 <td>fakeuser@email.com</td>
-                            </tr><tr>
-                                <td>000000</td>
-                                <td>SampleF</td>
-                                <td>S</td>
-                                <td>SampleL</td>
-                                <td>Sample Place</td>
-                                <td>Sample Occupation</td>
-                                <td>123 Address St</td>
-                                <td>Sample City</td>
-                                <td>FL</td>
-                                <td>12345</td>
-                                <td>XXX-XXX-XXXX</td>
-                                <td>fakeuser@email.com</td>
-                            </tr><tr>
-                                <td>000000</td>
-                                <td>SampleF</td>
-                                <td>S</td>
-                                <td>SampleL</td>
-                                <td>Sample Place</td>
-                                <td>Sample Occupation</td>
-                                <td>123 Address St</td>
-                                <td>Sample City</td>
-                                <td>FL</td>
-                                <td>12345</td>
-                                <td>XXX-XXX-XXXX</td>
-                                <td>fakeuser@email.com</td>
-                            </tr><tr>
-                                <td>000000</td>
-                                <td>SampleF</td>
-                                <td>S</td>
-                                <td>SampleL</td>
-                                <td>Sample Place</td>
-                                <td>Sample Occupation</td>
-                                <td>123 Address St</td>
-                                <td>Sample City</td>
-                                <td>FL</td>
-                                <td>12345</td>
-                                <td>XXX-XXX-XXXX</td>
-                                <td>fakeuser@email.com</td>
+                                <td>********</td>
+                                <td style="word-spacing: 5px; text-align: center;">
+                                    <a href=""><i class="far fa-edit"></i></a>
+                                    <a href=""><i class="fas fa-trash"></i></a>                                    
+                                </td>
                             </tr>
                         </table>
+                        <br>
+                    <div class="actions"><a href=""><button><i class="fas fa-plus"></i> Add New Author</button></a></div>
                     </div>
+
                 </div>
+
             </div>
         </main>
     </main>
