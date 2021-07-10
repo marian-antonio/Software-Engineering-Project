@@ -1,0 +1,17 @@
+Reports:
+Might need to add some alternate view option for Report tables
+
+-Author: Done
+
+-Reviewer: Done
+
+-Review Summary:
+Need weighted score column and data
+
+-Review Comment Summary: Done
+
+Other:
+Need to change Links with Admin pages
+
+Might Need to Change connect details to work and check if table column names match as well
+ $mysqli = new mysqli('127.0.0.1:3306', 'root', 'donkeys', 'CPMS') or die($mysqli->error());
