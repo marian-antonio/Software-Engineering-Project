@@ -82,6 +82,7 @@ main .login-page .input-label{
     font-size: 18px;
     padding: 2px 5px;
 }
+
 main .login-page input{
     font-size: 16px;
     width: 100%;
@@ -258,6 +259,7 @@ main .registration-page select{
     border-right: 1px solid lightgrey;
     border-bottom: 1px solid grey;
 }
+
 main .topics{
     padding: 10px 0;
     display: block;
@@ -273,6 +275,9 @@ main .topics table tr, .topics table td{
     padding-bottom: 10px;
 }
 
+main .errors{
+    padding: 15px;
+}
 
 /* Styles for all pages after log in/registration */
 
