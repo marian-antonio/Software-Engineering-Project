@@ -1,5 +1,46 @@
 <?php
 
+// used in registerReviewer and submitPaper to store checkbox input
+function getTopics(){
+    $result = array(
+        "analysisOfAlgorithms" => $_POST['analysisOfAlgorithms'], 
+        "applications" => $_POST['applications'],
+        "architecture" => $_POST['architecture'],
+        "artificialIntelligence" => $_POST['artificialIntelligence'],
+        "computerEngineering" => $_POST['computerEngineering'],
+        "curriculum" => $_POST['curriculum'],
+        "dataStructures" => $_POST['dataStructures'],
+        "databasesColumn" => $_POST['databases'],
+        "distanceLearning" => $_POST['distanceLearning'],
+        "distributedSystems" => $_POST['distributedSystems'],
+        "ethicalSocietalIssues" => $_POST['ethicalSocietalIssues'],
+        "firstYearComputing" => $_POST['firstYearComputing'],
+        "genderIssues" => $_POST['genderIssues'],
+        "grantWriting" => $_POST['grantWriting'],
+        "graphicsImageProcessing" => $_POST['graphicsImageProcessing'],
+        "humanComputerInteraction" => $_POST['humanComputerInteraction'],
+        "laboratoryEnvironments" => $_POST['laboratoryEnvironments'],
+        "literacy" => $_POST['literacy'],
+        "mathematicsInComputing" => $_POST['mathInComputing'],
+        "multimedia" => $_POST['multimedia'],
+        "networkingDataCommunications" => $_POST['networkDataCommunications'],
+        "nonMajorCourses" => $_POST['nonMajorCourses'],
+        "objectOrientedIssues" => $_POST['objectOrientedIssues'],
+        "operatingSystems" => $_POST['operatingSystems'],
+        "parallelProcessing" => $_POST['parallelProcessing'],
+        "pedagogy" => $_POST['pedagogy'],
+        "programmingLanguages" => $_POST['programmingLanguages'],
+        "research" => $_POST['research'],
+        "security" => $_POST['security'],
+        "softwareEngineering" => $_POST['softwareEngineering'],
+        "systemsAnalysisAndDesign" => $_POST['systemsAnalysisDesign'],
+        "usingTechnologyInTheClassroom" => $_POST['technologyClassroom'],
+        "webAndInternetProgramming" => $_POST['webProgramming'],
+        "other" => $_POST['other']
+    );
+    return $result;
+}
+
 function emptyInputRegister($emailAddress, $password, $confirmPassword,
 $firstName, $lastName, $affiliation, $department, $address, 
 $city, $state, $zipCode, $phoneNumber)
@@ -73,6 +114,36 @@ function emailExists($conn, $emailAddress, $location, $userType){
     mysqli_stmt_close($statement);
 }
 
+function userExists($conn, $userID, $location, $userType){
+    $result;
+    $statement = mysqli_stmt_init($conn);
+    if($userType == "author"){
+        $column = "AuthorID";
+    }
+    elseif($userType == "reviewer"){
+        $column = "ReviewerID";
+    }
+
+    $check_query = "SELECT * FROM $userType WHERE $column = ?;";
+    if(!mysqli_stmt_prepare($statement, $check_query)){
+        header("location: " . $originalLocation . "?error=stmtfailed" );
+        exit();
+    }
+    mysqli_stmt_bind_param($statement, "i", $userID);
+    mysqli_stmt_execute($statement);
+
+    $resultStmt = mysqli_stmt_get_result($statement);
+
+    if($row = mysqli_fetch_assoc($resultStmt)){
+        return $row;
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($statement);
+}
+
 function createAuthor($conn, $emailAddress, $password, $firstName, $middleInitial, $lastName, 
     $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $userType, $originalLocation){
 
@@ -87,7 +158,8 @@ function createAuthor($conn, $emailAddress, $password, $firstName, $middleInitia
     mysqli_stmt_bind_param($statement, "ssssssssssss", $firstName, $middleInitial, $lastName, $affiliation, 
         $department, $address, $city, $state, $zipCode, $phoneNumber, $emailAddress, $password);
     mysqli_stmt_execute($statement);
-    mysqli_stmt_close($statement);       
+    mysqli_stmt_close($statement);
+    header("location: ../login.php?authorRegistration=success" );       
 }
 
 function createReviewer($conn, $emailAddress, $password, $firstName, 
@@ -124,7 +196,7 @@ function createReviewer($conn, $emailAddress, $password, $firstName,
         $topicsArray["computerEngineering"], 
         $topicsArray["curriculum"], 
         $topicsArray["dataStructures"], 
-        $topicsArray["databases"], 
+        $topicsArray["databasesColumn"], 
         $topicsArray["distanceLearning"], 
         $topicsArray["distributedSystems"], 
         $topicsArray["ethicalSocietalIssues"], 
@@ -252,5 +324,78 @@ function userLogin($conn, $emailAddress, $password, $accountType){
                 header("location: ../reviewerPages/reviewerHome.php?login=success");
             }
         }
+    }
+}
+
+
+function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
+        $fileExtension, $noteToReviewers, $topicsArray, $otherDescription, $file, $destination){
+
+    $statement = mysqli_stmt_init($conn);
+    $insert_query = "INSERT INTO paper (AuthorID, FilenameOriginal, Filename, Title, Certification, NotesToReviewers,
+                    AnalysisOfAlgorithms, Applications, Architecture, ArtificialIntelligence, 
+                    ComputerEngineering, Curriculum, DataStructures, DatabasesColumn, DistanceLearning,
+                    DistributedSystems, EthicalSocietalIssues, FirstYearComputing, GenderIssues,
+                    GrantWriting, GraphicsImageProcessing, HumanComputerInteraction, 
+                    LaboratoryEnvironments, Literacy, MathematicsInComputing, Multimedia, 
+                    NetworkingDataCommunications, NonMajorCourses, ObjectOrientedIssues, OperatingSystems,
+                    ParallelsProcessing, Pedagogy, ProgrammingLanguages, Research, Security, SoftwareEngineering,
+                    SystemsAnalysisAndDesign, UsingTechnologyInTheClassroom, WebAndInternetProgramming,
+                    Other, OtherDescription) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                                ?);";
+
+    if(!mysqli_stmt_prepare($statement, $insert_query)){
+        header("location: ../authorPages/submitPaper.php?error=queryfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($statement, "isssssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiis", $userID,
+        $fileNameOriginal, $fileName, $paperTitle, $fileExtension, $noteToReviewers, 
+        $topicsArray["analysisOfAlgorithms"],
+        $topicsArray["applications"], 
+        $topicsArray["architecture"], 
+        $topicsArray["artificialIntelligence"], 
+        $topicsArray["computerEngineering"], 
+        $topicsArray["curriculum"], 
+        $topicsArray["dataStructures"], 
+        $topicsArray["databasesColumn"], 
+        $topicsArray["distanceLearning"], 
+        $topicsArray["distributedSystems"], 
+        $topicsArray["ethicalSocietalIssues"], 
+        $topicsArray["firstYearComputing"], 
+        $topicsArray["genderIssues"], 
+        $topicsArray["grantWriting"], 
+        $topicsArray["graphicsImageProcessing"], 
+        $topicsArray["humanComputerInteraction"], 
+        $topicsArray["laboratoryEnvironments"], 
+        $topicsArray["literacy"], 
+        $topicsArray["mathematicsInComputing"], 
+        $topicsArray["multimedia"], 
+        $topicsArray["networkingDataCommunications"], 
+        $topicsArray["nonMajorCourses"], 
+        $topicsArray["objectOrientedIssues"], 
+        $topicsArray["operatingSystems"], 
+        $topicsArray["parallelProcessing"], 
+        $topicsArray["pedagogy"], 
+        $topicsArray["programmingLanguages"], 
+        $topicsArray["research"], 
+        $topicsArray["security"], 
+        $topicsArray["softwareEngineering"], 
+        $topicsArray["systemsAnalysisAndDesign"], 
+        $topicsArray["usingTechnologyInTheClassroom"], 
+        $topicsArray["webAndInternetProgramming"], 
+        $topicsArray["other"],
+        $otherDescription        
+    );
+
+    mysqli_stmt_execute($statement);
+    mysqli_stmt_close($statement);
+    if(move_uploaded_file($file, $destination)){
+        header("location: ../authorPages/authorHome.php?uploadSuccess");
+    }
+    else{
+        header("location: ../authorPages/submitPaper.php?error=uploadFail");
+        exit();
     }
 }
