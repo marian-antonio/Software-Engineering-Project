@@ -24,9 +24,7 @@ if(isset($_POST["submitPaper"])){
     $errors = array();
     $ext = array('doc', 'pdf');     // valid file types
     if(in_array($fileExtension, $ext) === FALSE){
-        $errors['invalidExtension'] = "Please upload either a .doc or .pdf file.";
-        header("location: ../authorPages/submitPaper.php?error=wrongext");
-        exit();
+        $errors['invalidExtension'] = "Invalid file type. Please upload either a .doc or .pdf file.";
     }
     if(array_sum($topicsArray) < 1){
         $errors['noTopics'] = "You must choose at least one topic.";

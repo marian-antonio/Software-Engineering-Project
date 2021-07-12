@@ -231,51 +231,76 @@ function createReviewer($conn, $emailAddress, $password, $firstName,
     header("location: ../login.php?reviewerRegistration=success");
 }
 
-// function addTopics($conn, $emailAddress, $topicsArray, $otherDescription){
-//     $query = "UPDATE reviewer SET
-//             AnalysisOfAlgorithms='$topicsArray[analysisOfAlgorithms]', 
-//             Applications='$topicsArray[applications]', 
-//             Architecture='$topicsArray[architecture]', 
-//             ArtificialIntelligence='$topicsArray[artificialIntelligence]',
-//             ComputerEngineering='$topicsArray[computerEngineering]', 
-//             Curriculum='$topicsArray[curriculum]', 
-//             DataStructures='$topicsArray[dataStructures]', 
-//             DatabasesColumn='$topicsArray[databasesColumn]', 
-//             DistancedLearning='$topicsArray[distanceLearning]',
-//             DistributedSystems='$topicsArray[distributedSystems]',
-//             EthicalSocietalIssues='$topicsArray[ethicalSocietalIssues]', 
-//             FirstYearComputing='$topicsArray[firstYearComputing]', 
-//             GenderIssues='$topicsArray[genderIssues]',
-//             GrantWriting='$topicsArray[grantWriting]', 
-//             GraphicsImageProcessing='$topicsArray[graphicsImageProcessing]', 
-//             HumanComputerInteraction='$topicsArray[humanComputerInteraction]', 
-//             LaboratoryEnvironments='$topicsArray[laboratoryEnvironments]', 
-//             Literacy='$topicsArray[literacy]', 
-//             MathematicsInComputing='$topicsArray[mathematicsInComputing]', 
-//             Multimedia='$topicsArray[multimedia]', 
-//             NetworkingDataCommunications='$topicsArray[networkingDataCommunications]', 
-//             NonMajorCourses='$topicsArray[nonMajorCourses]', 
-//             ObjectOrientedIssues='$topicsArray[objectOrientedIssues]', 
-//             OperatingSystems='$topicsArray[operatingSystems]',
-//             ParallelProcessing='$topicsArray[parallelProcessing]', 
-//             Pedagogy='$topicsArray[pedagogy]', 
-//             ProgrammingLanguages='$topicsArray[programmingLanguages]', 
-//             Research='$topicsArray[research]', 
-//             Security='$topicsArray[security]', 
-//             SoftwareEngineering='$topicsArray[softwareEngineering]',
-//             SystemsAnalysisAndDesign='$topicsArray[systemsAnalysisAndDesign]', 
-//             UsingTechnologyInTheClassroom='$topicsArray[usingTechnologyInTheClassroom]', 
-//             WebAndInternetProgramming='$topicsArray[webAndInternetProgramming]',
-//             Other='$topicsArray[other]', 
-//             OtherDescription='$otherDescription'
-//             WHERE EmailAddress='$emailAddress'";
-//     if(!mysqli_query($conn, $query)){
-//         header("location: ../reviewerRegistration.php?error=addTopics");
-//         exit();
-//     }
-//     else
-//         header("location: ../login.php?registration=successReviewer");
-// }
+function editAccountBasic($conn, $userID, $emailAddress, $password, $firstName, $middleInitial, $lastName, 
+$affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $userType, $location){
+    if($userType == "author"){
+        $dbID = "AuthorID";
+    }
+    elseif($userType == "reviewer"){
+        $dbID = "ReviewerID";
+    }
+
+    $query = "UPDATE $userType SET 
+        FirstName='$firstName', MiddleInitial='$middleInitial', LastName='$lastName',
+        Affiliation='$affiliation', Department='$department', Address='$address',
+        City='$city', State='$state', ZipCode='$zipCode', PhoneNumber='$phoneNumber',
+        EmailAddress='$emailAddress', Password='$password'
+        WHERE $dbID='$userID'";
+
+        if(!mysqli_query($conn, $query)){
+            header("location: " . $location . "?error=queryFail");
+            exit();
+        }
+        else{
+            
+        } 
+}
+
+function editTopics($conn, $userID, $topicsArray, $otherDescription){
+    $query = "UPDATE reviewer SET
+            AnalysisOfAlgorithms='$topicsArray[analysisOfAlgorithms]', 
+            Applications='$topicsArray[applications]', 
+            Architecture='$topicsArray[architecture]', 
+            ArtificialIntelligence='$topicsArray[artificialIntelligence]',
+            ComputerEngineering='$topicsArray[computerEngineering]', 
+            Curriculum='$topicsArray[curriculum]', 
+            DataStructures='$topicsArray[dataStructures]', 
+            DatabasesColumn='$topicsArray[databasesColumn]', 
+            DistancedLearning='$topicsArray[distanceLearning]',
+            DistributedSystems='$topicsArray[distributedSystems]',
+            EthicalSocietalIssues='$topicsArray[ethicalSocietalIssues]', 
+            FirstYearComputing='$topicsArray[firstYearComputing]', 
+            GenderIssues='$topicsArray[genderIssues]',
+            GrantWriting='$topicsArray[grantWriting]', 
+            GraphicsImageProcessing='$topicsArray[graphicsImageProcessing]', 
+            HumanComputerInteraction='$topicsArray[humanComputerInteraction]', 
+            LaboratoryEnvironments='$topicsArray[laboratoryEnvironments]', 
+            Literacy='$topicsArray[literacy]', 
+            MathematicsInComputing='$topicsArray[mathematicsInComputing]', 
+            Multimedia='$topicsArray[multimedia]', 
+            NetworkingDataCommunications='$topicsArray[networkingDataCommunications]', 
+            NonMajorCourses='$topicsArray[nonMajorCourses]', 
+            ObjectOrientedIssues='$topicsArray[objectOrientedIssues]', 
+            OperatingSystems='$topicsArray[operatingSystems]',
+            ParallelProcessing='$topicsArray[parallelProcessing]', 
+            Pedagogy='$topicsArray[pedagogy]', 
+            ProgrammingLanguages='$topicsArray[programmingLanguages]', 
+            Research='$topicsArray[research]', 
+            Security='$topicsArray[security]', 
+            SoftwareEngineering='$topicsArray[softwareEngineering]',
+            SystemsAnalysisAndDesign='$topicsArray[systemsAnalysisAndDesign]', 
+            UsingTechnologyInTheClassroom='$topicsArray[usingTechnologyInTheClassroom]', 
+            WebAndInternetProgramming='$topicsArray[webAndInternetProgramming]',
+            Other='$topicsArray[other]', 
+            OtherDescription='$otherDescription'
+            WHERE ReviewerID='$userID'";
+
+    if(!mysqli_query($conn, $query)){
+        header("location: ../reviewerPages/editReviewerAccount.php?error=queryFailTopics");
+        exit();
+    }
+}
+
 
 function emptyInputLogin($emailAddress, $password, $accountType)
 {
@@ -293,10 +318,11 @@ function emptyInputLogin($emailAddress, $password, $accountType)
 function userLogin($conn, $emailAddress, $password, $accountType){
     // admin credentials are hardcoded
     if ($accountType == "admin"){
-        if($emailAddress == "admin@CPMS.com" && $password == "aaaaa")
-        session_start();
-        header("location: ../adminPages/adminHome.php?login=success");
-        $userID = "99999";
+        if($emailAddress == "admin@CPMS.com" && $password == "aaaaa"){
+            session_start();
+            header("location: ../adminPages/adminHome.php?login=success");
+            $_SESSION["userID"] = "99999";
+        }
     }
     else{   /* for either author or reviewer log in */
         $location = "../login.php";
@@ -324,6 +350,32 @@ function userLogin($conn, $emailAddress, $password, $accountType){
                 header("location: ../reviewerPages/reviewerHome.php?login=success");
             }
         }
+    }
+}
+
+function recoverPassword($conn, $emailAddress, $userType, $location){
+    // info for email that this is being sent from:
+    // email: cpms_noreply_test@yahoo.com
+    // password: CEN-4020
+    // password for smtp: yrmpqxfvvzpzojge
+    // tutorial to set this up: https://youtu.be/4_NP_WYFmIM
+
+    if($userType == "admin"){
+        $password = "aaaaa";
+    }
+    else{
+        $user = emailExists($conn, $emailAddress, $location, $userType);
+        $password = $user["Password"];
+    }
+
+    $subject = "CPMS - Recover Password";
+    $headers = "From: cpms_noreply_test@yahoo.com";
+    $message = "Your password for your " . $userType . " account is " . $password;
+    if(mail($emailAddress, $subject, $message, $headers)){
+        header("location: ../login.php?passwordSent");
+    }
+    else{
+        header("location: ../forgotPassword.php?error=unableToSend");
     }
 }
 
@@ -397,5 +449,14 @@ function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
     else{
         header("location: ../authorPages/submitPaper.php?error=uploadFail");
         exit();
+    }
+}
+
+function isChecked($topic){
+    if($topic == 1){
+        return "checked";
+    }
+    else{
+        return "";
     }
 }

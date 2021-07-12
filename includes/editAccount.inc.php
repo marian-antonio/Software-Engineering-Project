@@ -1,14 +1,9 @@
 <?php
 
-// so that user can't access this unless user has submitted
-// information through either of the registration pages
-if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
+session_start();
+if(isset($_SESSION["userID"]) && (isset($_POST["editAuthorAccount"]) || isset($_POST["editReviewerAccount"]))){
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
-
-    session_start();
-
-    // receive data from registration forms
     $emailAddress = mysqli_real_escape_string($conn, $_POST['emailAddress']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $confirmPassword = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
@@ -22,9 +17,10 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     $state = mysqli_real_escape_string($conn, $_POST['state']);
     $zipCode = mysqli_real_escape_string($conn, $_POST['zipCode']);
     $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
+    $userID = $_SESSION["userID"];
 
     // reviewer input only
-    if(isset($_POST["registerReviewer"])){
+    if(isset($_POST["editReviewerAccount"])){
         // from functions.inc.php
         $topicsArray= getTopics();
 
@@ -37,40 +33,30 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     }
 
     // author vs reviewer declarations for functions
-    if (isset($_POST["registerAuthor"])){
-        $originalLocation = "../authorRegistration.php";
+    if (isset($_POST["editAuthorAccount"])){
+        $originalLocation = "../authorPages/editAuthorAccount.php";
         $userType = "author";
     }
-    elseif (isset($_POST["registerReviewer"])){
-        $originalLocation = "../reviewerRegistration.php";
+    elseif (isset($_POST["editReviewerAccount"])){
+        $originalLocation = "../reviewerPages/editReviewerAccount.php";
         $userType = "reviewer";
     }
 
-    // error handling functions
+    $row = userExists($conn, $userID, $originalLocation, $userType);
+    $currentEmail = $row['EmailAddress'];
+
+    // error handling
     $errors = array();
-
-    if(emptyInputRegister($emailAddress, $password, $confirmPassword,
-    $firstName, $lastName, $affiliation, $department,
-    $address, $city, $state, $zipCode, $phoneNumber) !== false){
-        $errors['emptyInput'] = "Please fill in all input boxes.";
-    }
-
     if(invalidEmailAddress($emailAddress) !== false){
         $errors['invalidEmail'] = "Invalid Email.";
     }
-
     if(emailExists($conn, $emailAddress, $originalLocation, $userType) !== false){
-        $errors['emailExists'] = "The email address you entered is already registered. Please enter a different email address.";
+        if($emailAddress != $currentEmail)
+            $errors['emailExists'] = "The email address you entered is already registered. Please enter a different email address.";
     }
-
     if(passwordMatch($password, $confirmPassword) !== false){
         $errors['passwordMatch'] = "Passwords do not match.";
     }
-
-    if(passwordLength($password, $confirmPassword) !== false){
-        $errors['passwordLength'] = "Password length must be a maximum of 5 characters.";
-    }
-
     if ($userType == "reviewer"){
         if (array_sum($topicsArray) < 1){
             $errors['noTopics'] = "You must choose at least one topic.";
@@ -79,38 +65,24 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
             $errors['noOtherDescription'] = "Please fill the text box for other topics.";
         }
     }
-    
-    // if any errors were found, return to previous page
     if(sizeof($errors) > 0){
         $_SESSION['error'] = $errors;
         header("location: " . $originalLocation . "?error=invalidInput");
         exit();
     }
     else{
-    /* TODO
-    - check if any boxes are checked
-    - phone number follows correct format
-    - middle initial only 1 char
-    - how to avoid code injection
-    - add error messages to appropriate parts
-    - add stmt error messages
-     */
-
-    // user creation
-        if (isset($_POST["registerReviewer"])){
-            createAuthor($conn, $emailAddress, $password, $firstName, 
-            $middleInitial, $lastName, $affiliation, $department, $address, 
-            $city, $state, $zipCode, $phoneNumber, $userType, $originalLocation);
-        }    
-        if (isset($_POST["registerReviewer"])){
-            // addTopics($conn, $emailAddress, $topicsArray, $otherDescription);
-            createReviewer($conn, $emailAddress, $password, $firstName, 
-            $middleInitial, $lastName, $affiliation, $department, $address, 
-            $city, $state, $zipCode, $phoneNumber, $topicsArray, $otherDescription);
+        editAccountBasic($conn, $userID, $emailAddress, $password, $firstName, $middleInitial, $lastName, 
+            $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $userType, $originalLocation);
+        if($userType == "author"){
+            header("location: ../authorPages/authorAccount.php?editSuccess");
+        }
+        elseif ($userType == "reviewer") {
+            editTopics($conn, $userID, $topicsArray, $otherDescription);
+            header("location: ../reviewerPages/reviewerAccount.php?editSuccess");
         }
         unset($_SESSION['error']);
     }
 }
-else{   // otherwise, user will be sent back to registration page
-    header("location: ../registration.php?error");
+else{
+    header("location: ../login.php?error=invalidAccess");
 }
