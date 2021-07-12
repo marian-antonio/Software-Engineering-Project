@@ -48,10 +48,12 @@
             </p>
             <form action="includes/login.inc.php" method="post">
                 <div class="input-label"> Email </div>
-                <input type="email" name="emailAddress" placeholder ="Email Address" required>
+                <input type="email" name="emailAddress" placeholder ="Email Address" required pattern=".+\.[a-zA-Z]+"
+                    title="Please enter a valid email address.">
 
                 <div class="input-label"> Password </div>                
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" required pattern="[^\s]+"
+                    title="Password must not contain spaces.">
                 
                 <p><a href="forgotPassword.php">Forgot Password? Click here to retrieve it.</a></p>
 

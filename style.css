@@ -227,7 +227,7 @@ main .registration-page .user-info .input-box input, .input-box-address input{
 main .registration-page .user-info .input-box label, .input-box-address label{
     font-size: 20px;
     display: block;
-    padding-top: 5px;
+    padding-top: 2px;
     padding-left: 5px;
     font-weight: bold;
 }
@@ -258,6 +258,12 @@ main .registration-page select{
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgrey;
     border-bottom: 1px solid grey;
+}
+
+main p.input-info{
+    font-size: 14px; 
+    text-align: center;
+    margin-bottom: 0;
 }
 
 main .topics{
@@ -538,3 +544,4 @@ main button .fas{
 main button:hover .fas{
     color:black;
 }
+

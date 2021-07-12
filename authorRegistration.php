@@ -46,7 +46,6 @@
                 <hr><br>
                 <div class="errors">
                     <?php
-                        session_start();
                         if(isset($_SESSION['error'])){
                             echo "<h3 style='color: red; text-align: center;'>" . "Please fix the following errors before proceeding:" . "</h3> <br>";
                             
@@ -61,16 +60,20 @@
                 <div class="user-info">
                     <div class="input-box">
                         <label for="emailAddress">Email</label>
-                        <input type="email" name="emailAddress" placeholder="someone@email.com" required>
+                        <input type="email" name="emailAddress" placeholder="someone@email.com" required pattern=".+\.[a-zA-Z]+"
+                            title="Please enter a valid email address.">
                     </div>
                     <div class="input-box">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Password" required>
+                        <label for="password">Password</label> 
+                        <input type="password" name="password" placeholder="Password" required pattern="[^\s]{1,5}" 
+                            title="Password should be between 1-5 characters and have no spaces." style="margin-bottom:0;">
+                            <p class="input-info">Password must be between 1-5 characters and contain no spaces.</p>
                         <label for="confirmPassword">Confirm Password</label> 
-                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required pattern="[^\s]{1,5}" 
+                            title="Password should be between 1-5 characters and have no spaces.">
                     </div>
                     <div class="input-box">
-                        <label for="firstName">Full Name <!--p style='font-size: 16px; font-weight: 500; display: inline;'> (Middle Initial is Optional)</p--></label>
+                        <label for="firstName">Full Name</label>
                         <input type="text" name="firstName" placeholder="First Name" required>
                         <input type="text" name="middleInitial" placeholder="MI" maxlength = "1">
                         <input type="text" name="lastName" placeholder="Last Name" required >
@@ -83,8 +86,10 @@
                     </div>
                     <div class="input-box-address">
                         <label for="address">Address</label> 
-                        <input type="text" name="address" placeholder="Street Address" required>
-                        <input type="text" name="city" placeholder="City" required>
+                        <input type="text" name="address" placeholder="Street Address" required pattern="[a-zA-Z0-9 - . ]+"
+                            title="Only alphanumeric characters, '.', and '-' are allowed.">
+                        <input type="text" name="city" placeholder="City" required pattern="[a-zA-Z0-9 - ]+"
+                            title="Only alphanumeric characters and '-' are allowed.">
                         <select id="state" name="state" required>
                             <option value="">-</option>
                             <option value="AL">AL</option>
@@ -139,11 +144,13 @@
                             <option value="WV">WV</option>
                             <option value="WY">WY</option>
                         </select>		
-                        <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" required>
+                        <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" required pattern="[0-9]{5}" 
+                            title="Zip Code must be 5 digits and only contain numbers.">
                     </div>
                     <div class="input-box">
                         <label for="phone">Phone Number</label> 
-                        <input type="text" id="phone" name="phoneNumber" placeholder="1234567890" required>
+                        <input type="text" id="phone" name="phoneNumber" placeholder="Format: 123-456-7890" required
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must follow the format: 123-456-7890">
                     </div>
                     <?php
                         if(isset($_SESSION['error']))
