@@ -39,7 +39,7 @@
                 <p>
                     Click the 'Choose File' button to select the file you want to upload.
                     Then, select the topics that describe your paper. Once you are finished,
-                    click 'Complete Submission' to submit your paper.
+                    click 'Complete Submission' to submit your paper. Only ".pdf" and ".doc" files will be accepted.
                 </p>
             </div>
             <div class="submit-container">
