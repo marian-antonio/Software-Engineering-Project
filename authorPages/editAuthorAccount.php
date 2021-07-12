@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    if(!(isset($_SESSION["userID"]) and $_SESSION["userType"] == "author"))
+    if(!(isset($_SESSION["userID"])  && ($_SESSION["userType"] == "author")))
         header("location: ../login.php?error=invalidAccess");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <title>Author - Edit Account Details</title>
@@ -67,15 +67,20 @@
                         <div class="user-info">
                             <div class="input-box">
                                 <label for="email">Email</label> 
-                                <input type="email" name="emailAddress" placeholder="someone@email.com" value="<?php echo $row['EmailAddress']?>" required>
+                                <input type="email" name="emailAddress" placeholder="someone@email.com" 
+                                    value="<?php echo $row['EmailAddress']?>" required pattern=".+\.[a-zA-Z]+"
+                                    title="Please enter a valid email address.">
                             </div>
                             
                             <div class="input-box">
                                 <label for="password">Password</label> 
-                                <input type="password" name="password" placeholder="Password" value="<?php echo $row['Password']?>" maxlength = "5" required>
-
+                                <input type="password" name="password" placeholder="Password" 
+                                    value="<?php echo $row['Password']?>" required pattern="[^\s]{1,5}" 
+                                    title="Password should be between 1-5 characters and have no spaces." style="margin-bottom:0;">
+                                    <p class="input-info">Password must be between 1-5 characters and contain no spaces.</p>
                                 <label for="confirmPassword">Confirm Password</label> 
-                                <input type="password" name="confirmPassword" placeholder="Confirm Password" maxlength = "5" required>
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" required pattern="[^\s]{1,5}" 
+                            title="Password should be between 1-5 characters and have no spaces.">
                             </div>
 
                             <div class="input-box">
@@ -95,8 +100,10 @@
 
                             <div class="input-box-address">
                                 <label for="address">Address</label> 
-                                <input type="text" name="address" placeholder="Street Address" value="<?php echo $row['Address']?>" required>
-                                <input type="text" name="city" placeholder="City" value="<?php echo $row['City']?>" required>
+                                <input type="text" name="address" placeholder="Street Address" value="<?php echo $row['Address']?>" required 
+                                    pattern="[a-zA-Z0-9 - . ]+" title="Only alphanumeric characters, '.', and '-' are allowed.">
+                                <input type="text" name="city" placeholder="City" value="<?php echo $row['City']?>" required
+                                    pattern="[a-zA-Z0-9 - ]+" title="Only alphanumeric characters and '-' are allowed.">
                                 <select id="state" name="state" required>
                                     <option value="AL">AL</option>
                                     <option value="AK">AK</option>
@@ -153,12 +160,14 @@
                                 <script type="text/javascript">
                                     document.getElementById('state').value = "<?php echo $row['State'];?>";
                                 </script>
-                                <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" required value="<?php echo $row['ZipCode']?>">
+                                <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" required value="<?php echo $row['ZipCode']?>"
+                                    pattern="[0-9]{5}" title="Zip Code must be 5 digits and only contain numbers.">
                             </div>
 
                             <div class="input-box">
                                 <label for="phone">Phone Number</label> 
-                                <input type="text" id="phone" name="phoneNumber" placeholder="1234567890" required value="<?php echo $row['PhoneNumber']?>">
+                                <input type="text" id="phone" name="phoneNumber" placeholder="1234567890" required value="<?php echo $row['PhoneNumber']?>"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must follow the format: 123-456-7890">
                             </div>
                             <button type="submit" name="editAuthorAccount">Confirm Changes</button>
                         </div>
