@@ -318,7 +318,7 @@ function emptyInputLogin($emailAddress, $password, $accountType)
 function userLogin($conn, $emailAddress, $password, $accountType){
     // admin credentials are hardcoded
     if ($accountType == "admin"){
-        if($emailAddress == "admin@CPMS.com" && $password == "aaaaa"){
+        if($emailAddress == "cpms_noreply_test@yahoo.com" && $password == "aaaaa"){
             session_start();
             header("location: ../adminPages/adminHome.php?login=success");
             $_SESSION["userID"] = "99999";
