@@ -159,7 +159,7 @@ function createAuthor($conn, $emailAddress, $password, $firstName, $middleInitia
         $department, $address, $city, $state, $zipCode, $phoneNumber, $emailAddress, $password);
     mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
-    header("location: ../login.php?authorRegistration=success" );       
+    header("location: ../login.php?authorRegistration=success" );
 }
 
 function createReviewer($conn, $emailAddress, $password, $firstName, 
@@ -320,8 +320,9 @@ function userLogin($conn, $emailAddress, $password, $accountType){
     if ($accountType == "admin"){
         if($emailAddress == "cpms_noreply_test@yahoo.com" && $password == "aaaaa"){
             session_start();
-            header("location: ../adminPages/adminHome.php?login=success");
             $_SESSION["userID"] = "99999";
+            $_SESSION["userType"] = "admin";
+            header("location: ../adminPages/adminHome.php?login=success");
         }
     }
     else{   /* for either author or reviewer log in */

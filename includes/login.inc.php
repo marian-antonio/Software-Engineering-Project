@@ -5,7 +5,7 @@ if (isset($_POST["loginButton"])){
     require_once 'functions.inc.php';
 
     // receive data from login form
-    $emailAddress = mysqli_real_escape_string($conn, $_POST['emailAddress']);
+    $emailAddress = strtolower(mysqli_real_escape_string($conn, $_POST['emailAddress']));
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $accountType = mysqli_real_escape_string($conn, $_POST['accountType']);
 
