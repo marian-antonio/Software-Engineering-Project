@@ -97,7 +97,7 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
      */
 
     // user creation
-        if (isset($_POST["registerReviewer"])){
+        if (isset($_POST["registerAuthor"])){
             createAuthor($conn, $emailAddress, $password, $firstName, 
             $middleInitial, $lastName, $affiliation, $department, $address, 
             $city, $state, $zipCode, $phoneNumber, $userType, $originalLocation);
