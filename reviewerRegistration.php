@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    if(isset($_SESSION["userID"])){
+        if ($_SESSION["userType"] == "author")
+            header("location: ../authorPages/authorHome.php");
+        elseif ($_SESSION["userType"] == "reviewer")
+            header("location: ../reviewerPages/reviewerHome.php");
+        elseif ($_SESSION["userType"] == "admin")
+            header("location: ../adminPages/adminHome.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,15 +79,15 @@
                     </div>
                     <div class="input-box">
                         <label for="affiliation"> Affiliation </label> 
-                        <input type="text" name="affiliation" placeholder="Affiliation">
+                        <input type="text" name="affiliation" placeholder="Affiliation" required>
                         <label for="department">Department</label> 
-                        <input type="text" name="department" placeholder="Department">
+                        <input type="text" name="department" placeholder="Department" required>
                     </div>
                     <div class="input-box-address">
                         <label for="address">Address</label> 
-                        <input type="text" name="address" placeholder="Street Address">
-                        <input type="text" name="city" placeholder="City">
-                        <select id="state" name="state">
+                        <input type="text" name="address" placeholder="Street Address" required>
+                        <input type="text" name="city" placeholder="City" required>
+                        <select id="state" name="state" required>
                             <option value="">-</option>
                             <option value="AL">AL</option>
                             <option value="AK">AK</option>
@@ -129,14 +141,12 @@
                             <option value="WV">WV</option>
                             <option value="WY">WY</option>
                         </select>		
-                        <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code">
+                        <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" required>
                     </div>
                     <div class="input-box">
                         <label for="phone">Phone Number</label> 
-                        <input type="text" id="phone" name="phoneNumber" placeholder="(123) 456-7890">
+                        <input type="text" id="phone" name="phoneNumber" placeholder="123-456-7890" required>
                     </div>
-                    
-                    
                     <br><br><br><br><hr><br>
                     <h1>Topics</h1>
                         <p>Please indicate the topics in which you are knowledgeable and/or interested. (Note: If you've reviewed in the past,
@@ -151,8 +161,7 @@
                                 }
                             ?>
                         </div>
-                        <div class="topics">
-                            
+                        <div class="topics">                            
                             <table>
                                 <tr>
                                     <th></th>

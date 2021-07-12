@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    if(isset($_SESSION["userID"])){
+        if ($_SESSION["userType"] == "author")
+            header("location: ../authorPages/authorHome.php");
+        elseif ($_SESSION["userType"] == "reviewer")
+            header("location: ../reviewerPages/reviewerHome.php");
+        elseif ($_SESSION["userType"] == "admin")
+            header("location: ../adminPages/adminHome.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +27,7 @@
         </a>
         <ul class="navigation">
             <li><a href="login.php">LOG IN</a></li>
-            <li><a href="registration.html">CREATE A NEW ACCOUNT</a></li>
+            <li><a href="registration.php">CREATE A NEW ACCOUNT</a></li>
         </ul>
     </header>
     <main>
@@ -25,22 +37,24 @@
             <h1 style="font-size: 20px;">
                 Please enter your email, select your account type, and click 'Recover Password'. We will send your password to your email.
             </h1>
-            <div class="forgot-password" style="width: 40%; margin-left: auto; margin-right: auto;">
-                <input type="email" id="email" name="emailAddress" placeholder="Enter Email Address" style="text-align: center;">
-                <div class="account-type">
-                    <h2>Select Account Type:</h2>
-                    <input type="radio" id="author" name="accountType" value="author">
-                    <label for="author">Author</label>
-                    <input type="radio" id="reviewer" name="accountType" value="reviewer">
-                    <label for="reviewer">Reviewer</label>
-                    <input type="radio" id="admin" name="accountType" value="admin">
-                    <label for="admin">Admin</label>
+            <form action="../includes/forgotPassword.inc.php" method="post">
+                <div class="forgot-password" style="width: 50%; margin-left: auto; margin-right: auto;">
+                    <input type="email" id="email" name="emailAddress" placeholder="Enter Email Address" style="text-align: center;">
+                    <div class="account-type">
+                        <h2>Select Account Type:</h2>
+                        <input type="radio" id="author" name="accountType" value="author">
+                        <label for="author">Author</label>
+                        <input type="radio" id="reviewer" name="accountType" value="reviewer">
+                        <label for="reviewer">Reviewer</label>
+                        <input type="radio" id="admin" name="accountType" value="admin">
+                        <label for="admin">Admin</label>
+                    </div>
+                    <button type="submit" name="recoverPassword">Recover Password</button>
+                    <p style="color: #16254c;padding: 10px; text-align: right; font-size: 16px;">
+                        Remember your password? <a href="login.php">Click here to Log in</a>
+                    </p>
                 </div>
-                <button type="submit">Recover Password</button>
-                <p style="color: #16254c;padding: 10px; text-align: right; font-size: 16px;">
-                    Remember your password? <a href="login.php">Click here to Log in</a>
-                </p>
-            </div>
+            </form>
         </div>
     </main>
 </body>

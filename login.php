@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    if(isset($_SESSION["userID"])){
+        if ($_SESSION["userType"] == "author")
+            header("location: ../authorPages/authorHome.php");
+        elseif ($_SESSION["userType"] == "reviewer")
+            header("location: ../reviewerPages/reviewerHome.php");
+        elseif ($_SESSION["userType"] == "admin")
+            header("location: ../adminPages/adminHome.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +26,7 @@
             <img src="images/logo1.png" alt="CCMC Midwest">
         </a>
         <ul class="navigation">
-            <li>Don't have an account yet? <a href="registration.html">CREATE A NEW ACCOUNT</a></li>
+            <li>Don't have an account yet? <a href="registration.php">CREATE A NEW ACCOUNT</a></li>
         </ul>
     </header>
     <main>
@@ -35,16 +47,14 @@
                 ?>
             </p>
             <form action="includes/login.inc.php" method="post">
-                <div class="input-label">
-                    Email
-                </div>
-                <input type="email" name="emailAddress" placeholder ="Email Address">
-                <div class="input-label">
-                    Password
-                </div>                
+                <div class="input-label"> Email </div>
+                <input type="email" name="emailAddress" placeholder ="Email Address" required>
+
+                <div class="input-label"> Password </div>                
+                <input type="password" name="password" placeholder="Password" required>
                 
-                <input type="password" name="password" placeholder="Password">
                 <p><a href="forgotPassword.php">Forgot Password? Click here to retrieve it.</a></p>
+
                 <div class="account-type">
                     <h2>Select what are logging in as:</h2>
                     <input type="radio" id="author" name="accountType" value="author">
@@ -61,7 +71,7 @@
                 <hr>    
             </form>
             <h1>Don't have an account yet?</h1>
-            <a href="registration.html"><button>CREATE A NEW ACCOUNT</button></a>
+            <a href="registration.php"><button>CREATE A NEW ACCOUNT</button></a>
         </div>
     </main>
 </body>

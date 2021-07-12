@@ -353,10 +353,32 @@ main .actions .multiple-buttons li a button:hover{
     color: black;
 }
 
-/* table info */
-main .data-table{
-    margin: 50px;
+main .submit-container{
+    width: 50%;
+    margin: 20px auto;
 }
+
+main .submit-container table{
+    margin: auto;
+}
+main .upload-container table td{
+    font-size: 25px;
+    font-weight: 700;
+    padding: 10px 5px;
+}
+main .upload-container input[type="file"],
+.upload-container input{
+    font-size: 16px;
+    padding: 3px;
+}
+
+
+main .submit-container .submit-button{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: fit-content;
+}
+
 main .data-table table{
     width: 100%;
     border: 2px solid #16254C;
@@ -516,5 +538,3 @@ main button .fas{
 main button:hover .fas{
     color:black;
 }
-
-
