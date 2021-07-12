@@ -185,113 +185,1105 @@
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label>Paper ID:</label>
-                                    <input type="text" name="ReviewID" class=" form-control" value=""
-                                        placeholder=" Enter Paper ID:">
+                                    <div class="container">
+                                        <div class="actions">
+                                            <div class=data-table>
 
-                                    <label>Paper ID:</label>
-                                    <input type="text" name="PaperID" class=" form-control" value=""
-                                        placeholder=" Enter Paper ID:">
+                                                <label>Review ID:</label>
+                                                <input type="text" name="ReviewID" class=" form-control" value=""
+                                                    placeholder=" Enter Paper ID:">
 
-                                    <label>Reviewer ID:</label>
-                                    <input type="text" name="ReviewerID" class="form-control" value=""
-                                        placeholder=" Enter Author ID:">
+                                                <label>Paper ID:</label>
+                                                <input type="text" name="PaperID" class=" form-control" value=""
+                                                    placeholder=" Enter Paper ID:">
 
-                                    <label>AppropriatenessOfTopic:</label>
-                                    <input type="number" step="0.01" name="AppropriatenessOfTopic" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                <label>Reviewer ID:</label>
+                                                <input type="text" name="ReviewerID" class="form-control" value=""
+                                                    placeholder=" Enter Author ID:">
 
-                                    <label>TimelinessOfTopic:</label>
-                                    <input type="number" step="0.01" name="TimelinessOfTopic" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                <br>
+                                                <h2>Content</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
 
-                                    <label>SupportiveEvidence:</label>
-                                    <input type="number" step="0.01" name="SupportiveEvidence" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                    <tr>
+                                                        <td>Appropriateness of Topic</td>
+                                                        <td><label for="appropriatenessOfTopic1">
+                                                                <input type="radio" id="appropriatenessOfTopic1"
+                                                                    name="appropriatenessOfTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="appropriatenessOfTopic2">
+                                                                <input type="radio" id="appropriatenessOfTopic2"
+                                                                    name="appropriatenessOfTopic" value="2">
+                                                        </td>
+                                                        <td><label for="appropriatenessOfTopic3">
+                                                                <input type="radio" id="appropriatenessOfTopic3"
+                                                                    name="appropriatenessOfTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="appropriatenessOfTopic4">
+                                                                <input type="radio" id="appropriatenessOfTopic4"
+                                                                    name="appropriatenessOfTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="appropriatenessOfTopic5">
+                                                                <input type="radio" id="appropriatenessOfTopic5"
+                                                                    name="appropriatenessOfTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
 
-                                    <label>TechnicalQuality:</label>
-                                    <input type="number" step="0.01" name="TechnicalQuality" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                    <tr>
+                                                        <td>Timeliness of Topic</td>
+                                                        <td><label for="timelinessOfTopic1">
+                                                                <input type="radio" id="timelinessOfTopic1"
+                                                                    name="timelinessOfTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic2">
+                                                                <input type="radio" id="timelinessOfTopic2"
+                                                                    name="timelinessOfTopic" value="2">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic3">
+                                                                <input type="radio" id="timelinessOfTopic3"
+                                                                    name="timelinessOfTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic4">
+                                                                <input type="radio" id="timelinessOfTopic4"
+                                                                    name="timelinessOfTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic5">
+                                                                <input type="radio" id="timelinessOfTopic5"
+                                                                    name="timelinessOfTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Supportive Evidence</td>
+                                                        <td><label for="supportiveEvidence1">
+                                                                <input type="radio" id="supportiveEvidence1"
+                                                                    name="supportiveEvidence" value="1">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence2">
+                                                                <input type="radio" id="supportiveEvidence2"
+                                                                    name="supportiveEvidence" value="2">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence3">
+                                                                <input type="radio" id="supportiveEvidence3"
+                                                                    name="supportiveEvidence" value="3">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence4">
+                                                                <input type="radio" id="supportiveEvidence4"
+                                                                    name="supportiveEvidence" value="4">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence5">
+                                                                <input type="radio" id="supportiveEvidence5"
+                                                                    name="supportiveEvidence" value="5">
+                                                            </label></td>
+                                                    </tr>
 
-                                    <label>ScopeOfCoverage:</label>
-                                    <input type="number" step="0.01" name="ScopeOfCoverage" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                    <tr>
+                                                        <td>Technical Quality</td>
+                                                        <td><label for="technicalQuality1">
+                                                                <input type="radio" id="technicalQuality1"
+                                                                    name="technicalQuality" value="1">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality2">
+                                                                <input type="radio" id="technicalQuality2"
+                                                                    name="technicalQuality" value="2">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality3">
+                                                                <input type="radio" id="technicalQuality3"
+                                                                    name="technicalQuality" value="3">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality4">
+                                                                <input type="radio" id="technicalQuality4"
+                                                                    name="technicalQuality" value="4">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality5">
+                                                                <input type="radio" id="technicalQuality5"
+                                                                    name="technicalQuality" value="5">
+                                                            </label></td>
 
-                                    <label>CitationOfPreviousWork:</label>
-                                    <input type="number" step="0.01" name="CitationOfPreviousWork" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Scope of Coverage</td>
+                                                        <td><label for="scopeOfCoverage1">
+                                                                <input type="radio" id="scopeOfCoverage1"
+                                                                    name="scopeOfCoverage" value="1">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage2">
+                                                                <input type="radio" id="scopeOfCoverage2"
+                                                                    name="scopeOfCoverage" value="2">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage3">
+                                                                <input type="radio" id="scopeOfCoverage3"
+                                                                    name="scopeOfCoverage" value="3">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage4">
+                                                                <input type="radio" id="scopeOfCoverage4"
+                                                                    name="scopeOfCoverage" value="4">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage5">
+                                                                <input type="radio" id="scopeOfCoverage5"
+                                                                    name="scopeOfCoverage" value="5">
+                                                            </label></td>
 
-                                    <label>Originality:</label>
-                                    <input type="number" step="0.01" name="Originality" class="form-control" value=""
-                                        placeholder=" Rate from 1-5:">
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Citation of Previous Work</td>
+                                                        <td><label for="citationOfPreviousWork1">
+                                                                <input type="radio" id="citationOfPreviousWork1"
+                                                                    name="citationOfPreviousWork" value="1">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork2">
+                                                                <input type="radio" id="citationOfPreviousWork2"
+                                                                    name="citationOfPreviousWork" value="2">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork3">
+                                                                <input type="radio" id="citationOfPreviousWork3"
+                                                                    name="citationOfPreviousWork" value="3">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork4">
+                                                                <input type="radio" id="citationOfPreviousWork4"
+                                                                    name="citationOfPreviousWork" value="4">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork5">
+                                                                <input type="radio" id="citationOfPreviousWork5"
+                                                                    name="citationOfPreviousWork" value="5">
+                                                            </label></td>
+                                                    </tr>
 
-                                    <label>ContentComments:</label>
-                                    <input type="text" name="ContentComments" class="form-control" value=""
-                                        placeholder=" Enter Comments:">
+                                                    <tr>
+                                                        <td>Originality</td>
+                                                        <td><label for="originality1">
+                                                                <input type="radio" id="originality1" name="originality"
+                                                                    value="1">
+                                                            </label></td>
+                                                        <td><label for="originality2">
+                                                                <input type="radio" id="originality2" name="originality"
+                                                                    value="2">
+                                                            </label></td>
+                                                        <td><label for="originality3">
+                                                                <input type="radio" id="originality3" name="originality"
+                                                                    value="3">
+                                                            </label></td>
+                                                        <td><label for="originality4">
+                                                                <input type="radio" id="originality4" name="originality"
+                                                                    value="4">
+                                                            </label></td>
+                                                        <td><label for="originality5">
+                                                                <input type="radio" id="originality5" name="originality"
+                                                                    value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
 
-                                    <label>OrganizationOfPaper:</label>
-                                    <input type="number" step="0.01" name="OrganizationOfPaper" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
 
-                                    <label>ClarityOfMainMessage:</label>
-                                    <input type="number" step="0.01" name="ClarityOfMainMessage" class="form-control"
-                                        value="" placeholder=" Rate from 1-5:">
+                                                <label>Additional Comments Regarding Content:</label>
+                                                <input type="text" name="contentComments" class=" form-control" value=""
+                                                    placeholder="Enter Comments here: " maxlength="1000">
 
-                                    <label>Mechanics:</label>
-                                    <input type="number" step="0.01" name="Mechanics" class="form-control" value=""
-                                        placeholder=" Rate from 1-5:">
+                                                <h2><br>Written Document</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Organization of Paper</td>
+                                                        <td><label for="organizationOfPaper1">
+                                                                <input type="radio" id="organizationOfPaper1"
+                                                                    name="organizationOfPaper" value="1">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper2">
+                                                                <input type="radio" id="organizationOfPaper2"
+                                                                    name="organizationOfPaper" value="2">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper3">
+                                                                <input type="radio" id="organizationOfPaper3"
+                                                                    name="organizationOfPaper" value="3">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper4">
+                                                                <input type="radio" id="organizationOfPaper4"
+                                                                    name="organizationOfPaper" value="4">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper5">
+                                                                <input type="radio" id="organizationOfPaper5"
+                                                                    name="organizationOfPaper" value="5">
+                                                            </label></td>
+                                                    </tr>
 
-                                    <label>WrittenDocumentComments:</label>
-                                    <input type="text" name="WrittenDocumentComments" class="form-control" value=""
-                                        placeholder=" Enter Comments:">
+                                                    <tr>
+                                                        <td>Clarity of Main Message</td>
+                                                        <td><label for="clarityOfMessage1">
+                                                                <input type="radio" id="clarityOfMessage1"
+                                                                    name="clarityOfMessage" value="1">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage2">
+                                                                <input type="radio" id="clarityOfMessage2"
+                                                                    name="clarityOfMessage" value="2">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage3">
+                                                                <input type="radio" id="clarityOfMessage3"
+                                                                    name="clarityOfMessage" value="3">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage4">
+                                                                <input type="radio" id="clarityOfMessage4"
+                                                                    name="clarityOfMessage" value="4">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage5">
+                                                                <input type="radio" id="clarityOfMessage5"
+                                                                    name="clarityOfMessage" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mechanics (grammar, etc.)</td>
+                                                        <td><label for="mechanics1">
+                                                                <input type="radio" id="mechanics1" name="mechanics"
+                                                                    value="1">
+                                                            </label></td>
+                                                        <td><label for="mechanics2">
+                                                                <input type="radio" id="mechanics2" name="mechanics"
+                                                                    value="2">
+                                                            </label></td>
+                                                        <td><label for="mechanics3">
+                                                                <input type="radio" id="mechanics3" name="mechanics"
+                                                                    value="3">
+                                                            </label></td>
+                                                        <td><label for="mechanics4">
+                                                                <input type="radio" id="mechanics4" name="mechanics"
+                                                                    value="4">
+                                                            </label></td>
+                                                        <td><label for="mechanics5">
+                                                                <input type="radio" id="mechanics5" name="mechanics"
+                                                                    value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
 
-                                    <label>SuitabilityForPresentation:</label>
-                                    <input type="number" step="0.01" name="SuitabilityForPresentation"
-                                        class="form-control" value="" placeholder=" Rate from 1-5: ">
+                                                <label>Additional Comments Regarding Written Document:</label>
 
-                                    <label>PotentialInterestInTopic:</label>
-                                    <input type="number" step="0.01" name="PotentialInterestInTopic"
-                                        class="form-control" value="" placeholder=" Rate from 1-5: ">
+                                                <input type="text" name="writtenDocumentComments" class=" form-control"
+                                                    value="" placeholder="Enter Comments here: " maxlength="1000">
 
-                                    <label>PotentialForOralPresentationComments:</label>
-                                    <input type="text" name="PotentialForOralPresentationComments" class="form-control"
-                                        value="" placeholder=" Enter Comments:">
 
-                                    <label>OverallRating:</label>
-                                    <input type="number" step="0.01" name="OverallRating" class=" form-control" value=""
-                                        placeholder=" Rate from 1-5:">
+                                                <h2><br>Potential for Oral Presentation</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Suitability for Presentation</td>
+                                                        <td><label for="suitabilityForPresentation1">
+                                                                <input type="radio" id="suitabilityForPresentation1"
+                                                                    name="suitabilityForPresentation" value="1">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation2">
+                                                                <input type="radio" id="suitabilityForPresentation2"
+                                                                    name="suitabilityForPresentation" value="2">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation3">
+                                                                <input type="radio" id="suitabilityForPresentation3"
+                                                                    name="suitabilityForPresentation" value="3">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation4">
+                                                                <input type="radio" id="suitabilityForPresentation4"
+                                                                    name="suitabilityForPresentation" value="4">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation5">
+                                                                <input type="radio" id="suitabilityForPresentation5"
+                                                                    name="suitabilityForPresentation" value="5">
+                                                            </label></td>
+                                                    </tr>
 
-                                    <label>OverallRatingComments:</label>
-                                    <input type="text" name="OverallRatingComments" class="form-control" value=""
-                                        placeholder=" Enter Comments:">
+                                                    <tr>
+                                                        <td>Potential Interest in Topic</td>
+                                                        <td><label for="potentialInterestInTopic1">
+                                                                <input type="radio" id="potentialInterestInTopic1"
+                                                                    name="potentialInterestInTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic2">
+                                                                <input type="radio" id="potentialInterestInTopic2"
+                                                                    name="potentialInterestInTopic" value="2">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic3">
+                                                                <input type="radio" id="potentialInterestInTopic3"
+                                                                    name="potentialInterestInTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic4">
+                                                                <input type="radio" id="potentialInterestInTopic4"
+                                                                    name="potentialInterestInTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic5">
+                                                                <input type="radio" id="potentialInterestInTopic5"
+                                                                    name="potentialInterestInTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
 
-                                    <label>ComfortLevelTopic:</label>
-                                    <input type="number" step="0.01" name="ComfortLevelTopic" class="form-control"
-                                        value="" placeholder="Rate from 1-5: ">
 
-                                    <label>ComfortLevelAcceptability:</label>
-                                    <input type="number" step="0.01" name="ComfortLevelAcceptability"
-                                        class="form-control" value="" placeholder="Rate from 1-5: ">
+                                                <label>Additional Comments Regarding Potential for Oral
+                                                    Presentation:</label>
 
-                                    <br>
-                                    <input type="hidden" id="completeHidden" name="Complete" value='0'>
-                                    <input type="checkbox" id="complete" name="Complete" value='1'>
-                                    <label for="Complete" class="checkbox">Check if Complete</label>
-                                    <br>
+                                                <input type="text" name="potentialForOralPresentationComments"
+                                                    class=" form-control" value="" placeholder="Enter Comments here: "
+                                                    maxlength="1000">
 
+
+
+                                                <div class="overall-rating">
+                                                    <h2><br>Overall Rating</h2>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Category</th>
+                                                            <th>Rating</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Not Accept Paper</td>
+                                                            <td><label for="overallRating1">
+                                                                    <input type="radio" id="overallRating1"
+                                                                        name="overallRating" value="1">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Not Accept Paper</td>
+                                                            <td><label for="overallRating2">
+                                                                    <input type="radio" id="overallRating2"
+                                                                        name="overallRating" value="2">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Uncertain About Acceptance of Paper</td>
+                                                            <td><label for="overallRating3">
+                                                                    <input type="radio" id="overallRating3"
+                                                                        name="overallRating" value="3">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Accept Paper</td>
+                                                            <td><label for="overallRating4">
+                                                                    <input type="radio" id="overallRating4"
+                                                                        name="overallRating" value="4">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Accept Paper</td>
+                                                            <td><label for="overallRating5">
+                                                                    <input type="radio" id="overallRating5"
+                                                                        name="overallRating" value="5">
+                                                                </label></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <label>Overall Rating Comments:</label>
+
+                                                <input type="text" name="overallRatingComments" class=" form-control"
+                                                    value="" placeholder="Enter Comments here: " maxlength="1000">
+                                                <br>
+
+                                                <div class="overall-rating">
+                                                    <h2><br>Overall Rating</h2>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Category</th>
+                                                            <th>Rating</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Not Accept Paper</td>
+                                                            <td><label for="overallRating1">
+                                                                    <input type="radio" id="overallRating1"
+                                                                        name="overallRating" value="1">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Not Accept Paper</td>
+                                                            <td><label for="overallRating2">
+                                                                    <input type="radio" id="overallRating2"
+                                                                        name="overallRating" value="2">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Uncertain About Acceptance of Paper</td>
+                                                            <td><label for="overallRating3">
+                                                                    <input type="radio" id="overallRating3"
+                                                                        name="overallRating" value="3">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Accept Paper</td>
+                                                            <td><label for="overallRating4">
+                                                                    <input type="radio" id="overallRating4"
+                                                                        name="overallRating" value="4">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Accept Paper</td>
+                                                            <td><label for="overallRating5">
+                                                                    <input type="radio" id="overallRating5"
+                                                                        name="overallRating" value="5">
+                                                                </label></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+
+                                                <h2><br>Comfort Level</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Comfort Level for Topic</td>
+                                                        <td><label for="ComfortLevelTopic1">
+                                                                <input type="radio" id="ComfortLevelTopic1"
+                                                                    name="ComfortLevelTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic2">
+                                                                <input type="radio" id="ComfortLevelTopic2"
+                                                                    name="ComfortLevelTopic" value="2">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic3">
+                                                                <input type="radio" id="ComfortLevelTopic3"
+                                                                    name="ComfortLevelTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic4">
+                                                                <input type="radio" id="ComfortLevelTopic4"
+                                                                    name="ComfortLevelTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic5">
+                                                                <input type="radio" id="ComfortLevelTopic5"
+                                                                    name="ComfortLevelTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Comfort Level Acceptability for Topic</td>
+                                                        <td><label for="ComfortLevelAcceptability1">
+                                                                <input type="radio" id="ComfortLevelAcceptability1"
+                                                                    name="ComfortLevelAcceptability" value="1">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability2">
+                                                                <input type="radio" id="ComfortLevelAcceptability2"
+                                                                    name="ComfortLevelAcceptability" value="2">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability3">
+                                                                <input type="radio" id="ComfortLevelAcceptability3"
+                                                                    name="ComfortLevelAcceptability" value="3">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability4">
+                                                                <input type="radio" id="ComfortLevelAcceptability4"
+                                                                    name="ComfortLevelAcceptability" value="4">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability5">
+                                                                <input type="radio" id="ComfortLevelAcceptability5"
+                                                                    name="ComfortLevelAcceptability" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
+                                                <br>
+
+                                                <input type="hidden" id="completeHidden" name="Complete" value='0'>
+                                                <input type="checkbox" id="complete" name="Complete" value='1'>
+                                                <label for="Complete" class="checkbox">Check if Complete</label>
+                                                <br>
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="save" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+
+
+
+                                        </div>
+                                    </div>
                                 </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" name="save" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
                             </div>
                         </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <!-- Modal Edit -->
+            <div class="modal fade" id="ReviewModalEdit" tabindex="-1" role="dialog"
+                aria-labelledby="ReviewModalEditLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ReviewModalEditLabel">Change Review Data</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="maintainReviewProcess.php" method="post">
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <div class="container">
+                                        <div class="actions">
+                                            <div class=data-table>
+
+                                                <label>Review ID:</label>
+                                                <input type="text" name="ReviewID" class=" form-control" value=""
+                                                    placeholder=" Enter Paper ID:">
+
+                                                <label>Paper ID:</label>
+                                                <input type="text" name="PaperID" class=" form-control" value=""
+                                                    placeholder=" Enter Paper ID:">
+
+                                                <label>Reviewer ID:</label>
+                                                <input type="text" name="ReviewerID" class="form-control" value=""
+                                                    placeholder=" Enter Author ID:">
+
+                                                <br>
+                                                <h2>Content</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Appropriateness of Topic</td>
+                                                        <td><label for="appropriatenessOfTopic1">
+                                                                <input type="radio" id="appropriatenessOfTopic1"
+                                                                    name="appropriatenessOfTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="appropriatenessOfTopic2">
+                                                                <input type="radio" id="appropriatenessOfTopic2"
+                                                                    name="appropriatenessOfTopic" value="2">
+                                                        </td>
+                                                        <td><label for="appropriatenessOfTopic3">
+                                                                <input type="radio" id="appropriatenessOfTopic3"
+                                                                    name="appropriatenessOfTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="appropriatenessOfTopic4">
+                                                                <input type="radio" id="appropriatenessOfTopic4"
+                                                                    name="appropriatenessOfTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="appropriatenessOfTopic5">
+                                                                <input type="radio" id="appropriatenessOfTopic5"
+                                                                    name="appropriatenessOfTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Timeliness of Topic</td>
+                                                        <td><label for="timelinessOfTopic1">
+                                                                <input type="radio" id="timelinessOfTopic1"
+                                                                    name="timelinessOfTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic2">
+                                                                <input type="radio" id="timelinessOfTopic2"
+                                                                    name="timelinessOfTopic" value="2">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic3">
+                                                                <input type="radio" id="timelinessOfTopic3"
+                                                                    name="timelinessOfTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic4">
+                                                                <input type="radio" id="timelinessOfTopic4"
+                                                                    name="timelinessOfTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="timelinessOfTopic5">
+                                                                <input type="radio" id="timelinessOfTopic5"
+                                                                    name="timelinessOfTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Supportive Evidence</td>
+                                                        <td><label for="supportiveEvidence1">
+                                                                <input type="radio" id="supportiveEvidence1"
+                                                                    name="supportiveEvidence" value="1">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence2">
+                                                                <input type="radio" id="supportiveEvidence2"
+                                                                    name="supportiveEvidence" value="2">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence3">
+                                                                <input type="radio" id="supportiveEvidence3"
+                                                                    name="supportiveEvidence" value="3">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence4">
+                                                                <input type="radio" id="supportiveEvidence4"
+                                                                    name="supportiveEvidence" value="4">
+                                                            </label></td>
+                                                        <td><label for="supportiveEvidence5">
+                                                                <input type="radio" id="supportiveEvidence5"
+                                                                    name="supportiveEvidence" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Technical Quality</td>
+                                                        <td><label for="technicalQuality1">
+                                                                <input type="radio" id="technicalQuality1"
+                                                                    name="technicalQuality" value="1">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality2">
+                                                                <input type="radio" id="technicalQuality2"
+                                                                    name="technicalQuality" value="2">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality3">
+                                                                <input type="radio" id="technicalQuality3"
+                                                                    name="technicalQuality" value="3">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality4">
+                                                                <input type="radio" id="technicalQuality4"
+                                                                    name="technicalQuality" value="4">
+                                                            </label></td>
+                                                        <td><label for="technicalQuality5">
+                                                                <input type="radio" id="technicalQuality5"
+                                                                    name="technicalQuality" value="5">
+                                                            </label></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Scope of Coverage</td>
+                                                        <td><label for="scopeOfCoverage1">
+                                                                <input type="radio" id="scopeOfCoverage1"
+                                                                    name="scopeOfCoverage" value="1">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage2">
+                                                                <input type="radio" id="scopeOfCoverage2"
+                                                                    name="scopeOfCoverage" value="2">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage3">
+                                                                <input type="radio" id="scopeOfCoverage3"
+                                                                    name="scopeOfCoverage" value="3">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage4">
+                                                                <input type="radio" id="scopeOfCoverage4"
+                                                                    name="scopeOfCoverage" value="4">
+                                                            </label></td>
+                                                        <td><label for="scopeOfCoverage5">
+                                                                <input type="radio" id="scopeOfCoverage5"
+                                                                    name="scopeOfCoverage" value="5">
+                                                            </label></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Citation of Previous Work</td>
+                                                        <td><label for="citationOfPreviousWork1">
+                                                                <input type="radio" id="citationOfPreviousWork1"
+                                                                    name="citationOfPreviousWork" value="1">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork2">
+                                                                <input type="radio" id="citationOfPreviousWork2"
+                                                                    name="citationOfPreviousWork" value="2">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork3">
+                                                                <input type="radio" id="citationOfPreviousWork3"
+                                                                    name="citationOfPreviousWork" value="3">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork4">
+                                                                <input type="radio" id="citationOfPreviousWork4"
+                                                                    name="citationOfPreviousWork" value="4">
+                                                            </label></td>
+                                                        <td><label for="citationOfPreviousWork5">
+                                                                <input type="radio" id="citationOfPreviousWork5"
+                                                                    name="citationOfPreviousWork" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Originality</td>
+                                                        <td><label for="originality1">
+                                                                <input type="radio" id="originality1" name="originality"
+                                                                    value="1">
+                                                            </label></td>
+                                                        <td><label for="originality2">
+                                                                <input type="radio" id="originality2" name="originality"
+                                                                    value="2">
+                                                            </label></td>
+                                                        <td><label for="originality3">
+                                                                <input type="radio" id="originality3" name="originality"
+                                                                    value="3">
+                                                            </label></td>
+                                                        <td><label for="originality4">
+                                                                <input type="radio" id="originality4" name="originality"
+                                                                    value="4">
+                                                            </label></td>
+                                                        <td><label for="originality5">
+                                                                <input type="radio" id="originality5" name="originality"
+                                                                    value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
+
+
+                                                <label>Additional Comments Regarding Content:</label>
+                                                <input type="text" name="contentComments" class=" form-control" value=""
+                                                    placeholder="Enter Comments here: " maxlength="1000">
+
+                                                <h2><br>Written Document</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Organization of Paper</td>
+                                                        <td><label for="organizationOfPaper1">
+                                                                <input type="radio" id="organizationOfPaper1"
+                                                                    name="organizationOfPaper" value="1">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper2">
+                                                                <input type="radio" id="organizationOfPaper2"
+                                                                    name="organizationOfPaper" value="2">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper3">
+                                                                <input type="radio" id="organizationOfPaper3"
+                                                                    name="organizationOfPaper" value="3">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper4">
+                                                                <input type="radio" id="organizationOfPaper4"
+                                                                    name="organizationOfPaper" value="4">
+                                                            </label></td>
+                                                        <td><label for="organizationOfPaper5">
+                                                                <input type="radio" id="organizationOfPaper5"
+                                                                    name="organizationOfPaper" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Clarity of Main Message</td>
+                                                        <td><label for="clarityOfMessage1">
+                                                                <input type="radio" id="clarityOfMessage1"
+                                                                    name="clarityOfMessage" value="1">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage2">
+                                                                <input type="radio" id="clarityOfMessage2"
+                                                                    name="clarityOfMessage" value="2">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage3">
+                                                                <input type="radio" id="clarityOfMessage3"
+                                                                    name="clarityOfMessage" value="3">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage4">
+                                                                <input type="radio" id="clarityOfMessage4"
+                                                                    name="clarityOfMessage" value="4">
+                                                            </label></td>
+                                                        <td><label for="clarityOfMessage5">
+                                                                <input type="radio" id="clarityOfMessage5"
+                                                                    name="clarityOfMessage" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mechanics (grammar, etc.)</td>
+                                                        <td><label for="mechanics1">
+                                                                <input type="radio" id="mechanics1" name="mechanics"
+                                                                    value="1">
+                                                            </label></td>
+                                                        <td><label for="mechanics2">
+                                                                <input type="radio" id="mechanics2" name="mechanics"
+                                                                    value="2">
+                                                            </label></td>
+                                                        <td><label for="mechanics3">
+                                                                <input type="radio" id="mechanics3" name="mechanics"
+                                                                    value="3">
+                                                            </label></td>
+                                                        <td><label for="mechanics4">
+                                                                <input type="radio" id="mechanics4" name="mechanics"
+                                                                    value="4">
+                                                            </label></td>
+                                                        <td><label for="mechanics5">
+                                                                <input type="radio" id="mechanics5" name="mechanics"
+                                                                    value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
+
+                                                <label>Additional Comments Regarding Written Document:</label>
+
+                                                <input type="text" name="writtenDocumentComments" class=" form-control"
+                                                    value="" placeholder="Enter Comments here: " maxlength="1000">
+
+
+                                                <h2><br>Potential for Oral Presentation</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Suitability for Presentation</td>
+                                                        <td><label for="suitabilityForPresentation1">
+                                                                <input type="radio" id="suitabilityForPresentation1"
+                                                                    name="suitabilityForPresentation" value="1">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation2">
+                                                                <input type="radio" id="suitabilityForPresentation2"
+                                                                    name="suitabilityForPresentation" value="2">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation3">
+                                                                <input type="radio" id="suitabilityForPresentation3"
+                                                                    name="suitabilityForPresentation" value="3">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation4">
+                                                                <input type="radio" id="suitabilityForPresentation4"
+                                                                    name="suitabilityForPresentation" value="4">
+                                                            </label></td>
+                                                        <td><label for="suitabilityForPresentation5">
+                                                                <input type="radio" id="suitabilityForPresentation5"
+                                                                    name="suitabilityForPresentation" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Potential Interest in Topic</td>
+                                                        <td><label for="potentialInterestInTopic1">
+                                                                <input type="radio" id="potentialInterestInTopic1"
+                                                                    name="potentialInterestInTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic2">
+                                                                <input type="radio" id="potentialInterestInTopic2"
+                                                                    name="potentialInterestInTopic" value="2">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic3">
+                                                                <input type="radio" id="potentialInterestInTopic3"
+                                                                    name="potentialInterestInTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic4">
+                                                                <input type="radio" id="potentialInterestInTopic4"
+                                                                    name="potentialInterestInTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="potentialInterestInTopic5">
+                                                                <input type="radio" id="potentialInterestInTopic5"
+                                                                    name="potentialInterestInTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
+
+
+                                                <label>Additional Comments Regarding Potential for Oral
+                                                    Presentation:</label>
+
+                                                <input type="text" name="potentialForOralPresentationComments"
+                                                    class=" form-control" value="" placeholder="Enter Comments here: "
+                                                    maxlength="1000">
+
+
+
+                                                <div class="overall-rating">
+                                                    <h2><br>Overall Rating</h2>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Category</th>
+                                                            <th>Rating</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Not Accept Paper</td>
+                                                            <td><label for="overallRating1">
+                                                                    <input type="radio" id="overallRating1"
+                                                                        name="overallRating" value="1">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Not Accept Paper</td>
+                                                            <td><label for="overallRating2">
+                                                                    <input type="radio" id="overallRating2"
+                                                                        name="overallRating" value="2">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Uncertain About Acceptance of Paper</td>
+                                                            <td><label for="overallRating3">
+                                                                    <input type="radio" id="overallRating3"
+                                                                        name="overallRating" value="3">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Accept Paper</td>
+                                                            <td><label for="overallRating4">
+                                                                    <input type="radio" id="overallRating4"
+                                                                        name="overallRating" value="4">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Accept Paper</td>
+                                                            <td><label for="overallRating5">
+                                                                    <input type="radio" id="overallRating5"
+                                                                        name="overallRating" value="5">
+                                                                </label></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <label>Overall Rating Comments:</label>
+
+                                                <input type="text" name="overallRatingComments" class=" form-control"
+                                                    value="" placeholder="Enter Comments here: " maxlength="1000">
+                                                <br>
+
+                                                <div class="overall-rating">
+                                                    <h2><br>Overall Rating</h2>
+                                                    <table>
+                                                        <tr>
+                                                            <th>Category</th>
+                                                            <th>Rating</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Not Accept Paper</td>
+                                                            <td><label for="overallRating1">
+                                                                    <input type="radio" id="overallRating1"
+                                                                        name="overallRating" value="1">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Not Accept Paper</td>
+                                                            <td><label for="overallRating2">
+                                                                    <input type="radio" id="overallRating2"
+                                                                        name="overallRating" value="2">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Uncertain About Acceptance of Paper</td>
+                                                            <td><label for="overallRating3">
+                                                                    <input type="radio" id="overallRating3"
+                                                                        name="overallRating" value="3">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Probably Should Accept Paper</td>
+                                                            <td><label for="overallRating4">
+                                                                    <input type="radio" id="overallRating4"
+                                                                        name="overallRating" value="4">
+                                                                </label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Definitely Should Accept Paper</td>
+                                                            <td><label for="overallRating5">
+                                                                    <input type="radio" id="overallRating5"
+                                                                        name="overallRating" value="5">
+                                                                </label></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+
+                                                <h2><br>Comfort Level</h2>
+                                                <table>
+                                                    <tr>
+                                                        <th>Category</th>
+                                                        <th>Poor</th>
+                                                        <th>Fair</th>
+                                                        <th>Average</th>
+                                                        <th>Good</th>
+                                                        <th>Excellent</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Comfort Level for Topic</td>
+                                                        <td><label for="ComfortLevelTopic1">
+                                                                <input type="radio" id="ComfortLevelTopic1"
+                                                                    name="ComfortLevelTopic" value="1">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic2">
+                                                                <input type="radio" id="ComfortLevelTopic2"
+                                                                    name="ComfortLevelTopic" value="2">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic3">
+                                                                <input type="radio" id="ComfortLevelTopic3"
+                                                                    name="ComfortLevelTopic" value="3">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic4">
+                                                                <input type="radio" id="ComfortLevelTopic4"
+                                                                    name="ComfortLevelTopic" value="4">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelTopic5">
+                                                                <input type="radio" id="ComfortLevelTopic5"
+                                                                    name="ComfortLevelTopic" value="5">
+                                                            </label></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Comfort Level Acceptability for Topic</td>
+                                                        <td><label for="ComfortLevelAcceptability1">
+                                                                <input type="radio" id="ComfortLevelAcceptability1"
+                                                                    name="ComfortLevelAcceptability" value="1">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability2">
+                                                                <input type="radio" id="ComfortLevelAcceptability2"
+                                                                    name="ComfortLevelAcceptability" value="2">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability3">
+                                                                <input type="radio" id="ComfortLevelAcceptability3"
+                                                                    name="ComfortLevelAcceptability" value="3">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability4">
+                                                                <input type="radio" id="ComfortLevelAcceptability4"
+                                                                    name="ComfortLevelAcceptability" value="4">
+                                                            </label></td>
+                                                        <td><label for="ComfortLevelAcceptability5">
+                                                                <input type="radio" id="ComfortLevelAcceptability5"
+                                                                    name="ComfortLevelAcceptability" value="5">
+                                                            </label></td>
+                                                    </tr>
+                                                </table>
+                                                <br>
+
+                                                <input type="hidden" id="completeHidden" name="Complete" value='0'>
+                                                <input type="checkbox" id="complete" name="Complete" value='1'>
+                                                <label for="Complete" class="checkbox">Check if Complete</label>
+                                                <br>
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
+
         </main>
     </main>
 </body>
