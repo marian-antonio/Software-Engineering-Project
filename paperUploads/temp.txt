@@ -1,0 +1,3 @@
+Placeholder for paperUploads dir.
+Use this directory so that author paper uploads are downloaded locally to this folder.
+Files in this folder will be downloaded for reviews.
