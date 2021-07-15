@@ -22,9 +22,10 @@
         </a>
         <ul class="navigation">
             <li><a href="../adminHome.php">HOME</a></li>
-            <li><a href="../adminManage.php">ADMIN</a></li>
+            <li><a href="../adminManage.php">MANAGE</a></li>
             <li><a href="../adminReports.php" style="background-color: white; color: black;">
                     REPORTS</a></li>
+            <li><a href="../toAssignReviewer.php">ASSIGN REVIEWERS</a></li>
             <li><a href="../../includes/logout.inc.php">LOGOUT</a></li>
         </ul>
     </header>
