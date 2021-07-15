@@ -49,26 +49,12 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     // error handling functions
     $errors = array();
 
-    if(emptyInputRegister($emailAddress, $password, $confirmPassword,
-    $firstName, $lastName, $affiliation, $department,
-    $address, $city, $state, $zipCode, $phoneNumber) !== false){
-        $errors['emptyInput'] = "Please fill in all input boxes.";
-    }
-    
-    if(invalidEmailAddress($emailAddress) !== false){
-        $errors['invalidEmail'] = "Invalid Email.";
-    }
-
     if(emailExists($conn, $emailAddress, $originalLocation, $userType) !== false){
         $errors['emailExists'] = "The email address you entered is already registered. Please enter a different email address.";
     }
 
     if(passwordMatch($password, $confirmPassword) !== false){
         $errors['passwordMatch'] = "Passwords do not match.";
-    }
-
-    if(passwordLength($password, $confirmPassword) !== false){
-        $errors['passwordLength'] = "Password length must be a maximum of 5 characters.";
     }
 
     if ($userType == "reviewer"){
@@ -83,7 +69,7 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     // if any errors were found, return to previous page
     if(sizeof($errors) > 0){
         $_SESSION['error'] = $errors;
-        header("location: " . $originalLocation . "?error=invalidInput");
+        header("location: " . $originalLocation . "?error=input");
         exit();
     }
     else{

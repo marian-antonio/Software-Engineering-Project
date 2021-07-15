@@ -1,6 +1,123 @@
 <?php
 
-// used in registerReviewer and submitPaper to store checkbox input
+function userLogin($conn, $emailAddress, $password, $accountType){
+    // admin credentials are hardcoded
+    // email = cpms_noreply_test@yahoo.com
+    // password = aaaaa
+    if ($accountType == "admin"){
+        if($emailAddress == "cpms_noreply_test@yahoo.com" && $password == "aaaaa"){
+            session_start();
+            $_SESSION["userID"] = "99999";
+            $_SESSION["userType"] = "admin";
+            header("location: ../adminPages/adminHome.php?login=success");
+        }
+        elseif($emailAddress != "cpms_noreply_test@yahoo.com" || $password != "aaaaa"){
+            header("location:../login.php?error=invalidCredentials");
+            exit();
+        }
+    }
+    else{   /* for either author or reviewer log in */
+        $location = "../login.php";
+        // check db for user
+        $user = emailExists($conn, $emailAddress, $location, $accountType);
+        if ($user == false){    // user not found in db
+            header("location: " . $location . "?error=invalidCredentials");
+            exit();
+        }
+        // get password from db
+        $dbPassword = $user["Password"];
+        if($password != $dbPassword){
+            header("location: " . $location . "?error=invalidCredentials");
+            exit();
+        }
+        elseif($password == $dbPassword){
+            session_start();
+            $_SESSION["userType"] = $accountType;
+            if($accountType == "author"){
+                $_SESSION["userID"] = $user["AuthorID"];
+                header("location: ../authorPages/authorHome.php?login=success");
+            }
+            elseif($accountType == "reviewer"){
+                $_SESSION["userID"] = $user["ReviewerID"];
+                header("location: ../reviewerPages/reviewerHome.php?login=success");
+            }
+        }
+    }
+}
+
+function emptyInputLogin($emailAddress, $password, $accountType)
+{
+    $result;
+    if(empty($emailAddress) || empty($password) || empty($accountType))
+    {
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function phoneNumberExists($conn, $phoneNumber, $location, $userType){
+    $result;
+    $statement = mysqli_stmt_init($conn);
+
+    $check_query = "SELECT * FROM $userType WHERE PhoneNumber = ?;";
+    if(!mysqli_stmt_prepare($statement, $check_query)){
+        header("location: " . $location . "?error=stmtfailed" );
+        exit();
+    }
+    mysqli_stmt_bind_param($statement, "s", $phoneNumber);
+    mysqli_stmt_execute($statement);
+
+    $resultStmt = mysqli_stmt_get_result($statement);
+
+    if($row = mysqli_fetch_assoc($resultStmt)){
+        return $row;
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($statement);
+}
+
+function passwordMatch($password, $confirmPassword){
+    $result;
+    if($password !== $confirmPassword){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+// goes through the database for each usertype and checks if the email is already registered
+function emailExists($conn, $emailAddress, $location, $userType){
+    $result;
+    $statement = mysqli_stmt_init($conn);
+    $check_query = "SELECT * FROM $userType WHERE EmailAddress = ?;";
+    if(!mysqli_stmt_prepare($statement, $check_query)){
+        header("location: " . $originalLocation . "?error=stmtfailed" );
+        exit();
+    }
+    mysqli_stmt_bind_param($statement, "s", $emailAddress);
+    mysqli_stmt_execute($statement);
+
+    $resultStmt = mysqli_stmt_get_result($statement);
+
+    if($row = mysqli_fetch_assoc($resultStmt)){
+        return $row;
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($statement);
+}
+
+// used in registerReviewer and submitPaper to store checkbox inputs
 function getTopics(){
     $result = array(
         "analysisOfAlgorithms" => $_POST['analysisOfAlgorithms'], 
@@ -41,79 +158,10 @@ function getTopics(){
     return $result;
 }
 
-function emptyInputRegister($emailAddress, $password, $confirmPassword,
-$firstName, $lastName, $affiliation, $department, $address, 
-$city, $state, $zipCode, $phoneNumber)
-{
-    $result;
-    if(empty($emailAddress) || empty($password) || empty($confirmPassword) || 
-    empty($firstName) || empty($lastName) || empty($affiliation) || empty($department) ||
-    empty($address) || empty($city) || empty($state) || empty($zipCode) || empty($phoneNumber))
-    {
-        $result = true;
-    }
-    else{
-        $result = false;
-    }
-    return $result;
-}
-
-function invalidEmailAddress($emailAddress){
-    $result;
-    if(!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)){
-        $result = true;
-    }
-    else{
-        $result = false;
-    }
-    return $result;
-}
-
-function passwordMatch($password, $confirmPassword){
-    $result;
-    if($password !== $confirmPassword){
-        $result = true;
-    }
-    else{
-        $result = false;
-    }
-    return $result;
-}
-
-function passwordLength($password, $confirmPassword){
-    $result;
-    if(strlen($password) > 5){
-        $result = true;
-    }
-    else{
-        $result = false;
-    }
-    return $result;
-}
-
-function emailExists($conn, $emailAddress, $location, $userType){
-    $result;
-    $statement = mysqli_stmt_init($conn);
-    $check_query = "SELECT * FROM $userType WHERE EmailAddress = ?;";
-    if(!mysqli_stmt_prepare($statement, $check_query)){
-        header("location: " . $originalLocation . "?error=stmtfailed" );
-        exit();
-    }
-    mysqli_stmt_bind_param($statement, "s", $emailAddress);
-    mysqli_stmt_execute($statement);
-
-    $resultStmt = mysqli_stmt_get_result($statement);
-
-    if($row = mysqli_fetch_assoc($resultStmt)){
-        return $row;
-    }
-    else{
-        $result = false;
-        return $result;
-    }
-    mysqli_stmt_close($statement);
-}
-
+// checks if an entity ID (for author/reviewer/paper/author) already exists
+// returns an array of the entire row corresponding to the ID
+// location tracks where the user came from or should be redirected to
+// should the mysql query fail
 function userExists($conn, $userID, $location, $userType){
     $result;
     $statement = mysqli_stmt_init($conn);
@@ -138,6 +186,7 @@ function userExists($conn, $userID, $location, $userType){
     mysqli_stmt_bind_param($statement, "i", $userID);
     mysqli_stmt_execute($statement);
 
+    //row result from the database corresponding to the ID
     $resultStmt = mysqli_stmt_get_result($statement);
 
     if($row = mysqli_fetch_assoc($resultStmt)){
@@ -150,17 +199,25 @@ function userExists($conn, $userID, $location, $userType){
     mysqli_stmt_close($statement);
 }
 
+
+// ENTITY CREATION FUNCTIONS
 function createAuthor($conn, $emailAddress, $password, $firstName, $middleInitial, $lastName, 
     $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $userType, $originalLocation){
 
     $statement = mysqli_stmt_init($conn);
+    // parameterizing
     $insert_query = "INSERT INTO $userType (FirstName, MiddleInitial, LastName, Affiliation, Department, 
                     Address, City, State, ZipCode, PhoneNumber, EmailAddress, Password) 
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+    // checks if its a valid query
+    // fails if any of the parameters do not match (e.g. wrong spelling, capitalization, mismatched number of variables)
     if(!mysqli_stmt_prepare($statement, $insert_query)){
         header("location: " . $originalLocation . "?error=stmtfailed" );
         exit();
     }
+
+    // binds each data to values above, the letters in the quotation marks correspond to the data type in the table
     mysqli_stmt_bind_param($statement, "ssssssssssss", $firstName, $middleInitial, $lastName, $affiliation, 
         $department, $address, $city, $state, $zipCode, $phoneNumber, $emailAddress, $password);
     mysqli_stmt_execute($statement);
@@ -173,6 +230,8 @@ function createReviewer($conn, $emailAddress, $password, $firstName,
     $city, $state, $zipCode, $phoneNumber, $topicsArray, $otherDescription){
     
     $statement = mysqli_stmt_init($conn);
+
+    // parameterizing
     $insert_query = "INSERT INTO reviewer (FirstName, MiddleInitial, LastName, Affiliation, Department, 
                     Address, City, State, ZipCode, PhoneNumber, EmailAddress, Password,
                     AnalysisOfAlgorithms, Applications, Architecture, ArtificialIntelligence, 
@@ -188,11 +247,14 @@ function createReviewer($conn, $emailAddress, $password, $firstName,
                                 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
                                 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
+    // checks if its a valid query
+    // fails if any of the parameters do not match (e.g. wrong spelling, capitalization, mismatched number of variables)
     if(!mysqli_stmt_prepare($statement, $insert_query)){
         header("location: ../reviewerRegistration.php?error=queryfailed");
         exit();
     }
 
+    // binds each data to values above, the letters in the quotation marks correspond to the data type in the table
     mysqli_stmt_bind_param($statement, "ssssssssssssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiis", $firstName, $middleInitial, $lastName, $affiliation, 
         $department, $address, $city, $state, $zipCode, $phoneNumber, $emailAddress, $password, 
         $topicsArray["analysisOfAlgorithms"],
@@ -232,6 +294,7 @@ function createReviewer($conn, $emailAddress, $password, $firstName,
         $otherDescription        
     );
 
+    // posts the data to the DB, then closes the connection and redirects user to login page
     mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
     header("location: ../login.php?reviewerRegistration=success");
@@ -245,7 +308,6 @@ $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $use
     elseif($userType == "reviewer"){
         $dbID = "ReviewerID";
     }
-
     $query = "UPDATE $userType SET 
         FirstName='$firstName', MiddleInitial='$middleInitial', LastName='$lastName',
         Affiliation='$affiliation', Department='$department', Address='$address',
@@ -300,7 +362,6 @@ function editTopics($conn, $userID, $topicsArray, $otherDescription){
             Other='$topicsArray[other]', 
             OtherDescription='$otherDescription'
             WHERE ReviewerID='$userID'";
-
     if(!mysqli_query($conn, $query)){
         header("location: ../reviewerPages/editReviewerAccount.php?error=queryFailTopics");
         exit();
@@ -308,91 +369,11 @@ function editTopics($conn, $userID, $topicsArray, $otherDescription){
 }
 
 
-function emptyInputLogin($emailAddress, $password, $accountType)
-{
-    $result;
-    if(empty($emailAddress) || empty($password) || empty($accountType))
-    {
-        $result = true;
-    }
-    else{
-        $result = false;
-    }
-    return $result;
-}
-
-function userLogin($conn, $emailAddress, $password, $accountType){
-    // admin credentials are hardcoded
-    // email = cpms_noreply_test@yahoo.com
-    // password = aaaaa
-    if ($accountType == "admin"){
-        if($emailAddress == "cpms_noreply_test@yahoo.com" && $password == "aaaaa"){
-            session_start();
-            $_SESSION["userID"] = "99999";
-            $_SESSION["userType"] = "admin";
-            header("location: ../adminPages/adminHome.php?login=success");
-        }
-        elseif($emailAddress != "cpms_noreply_test@yahoo.com" || $password != "aaaaa"){
-            header("location:../login.php?error=invalidCredentials");
-            exit();
-        }
-    }
-    else{   /* for either author or reviewer log in */
-        $location = "../login.php";
-        // check db for user
-        $user = emailExists($conn, $emailAddress, $location, $accountType);
-        if ($user == false){    // user not found in db
-            header("location: " . $location . "?error=invalidCredentials");
-            exit();
-        }
-        // get password from db
-        $dbPassword = $user["Password"];
-        if($password != $dbPassword){
-            header("location: " . $location . "?error=invalidCredentials");
-            exit();
-        }
-        elseif($password == $dbPassword){
-            session_start();
-            $_SESSION["userType"] = $accountType;
-            if($accountType == "author"){
-                $_SESSION["userID"] = $user["AuthorID"];
-                header("location: ../authorPages/authorHome.php?login=success");
-            }
-            elseif($accountType == "reviewer"){
-                $_SESSION["userID"] = $user["ReviewerID"];
-                header("location: ../reviewerPages/reviewerHome.php?login=success");
-            }
-        }
-    }
-}
-
-function recoverPassword($conn, $emailAddress, $userType, $location){
-    // info for email that this is being sent from:
-    // email: cpms_noreply_test@yahoo.com
-    // password: CEN-4020
-    // password for smtp: yrmpqxfvvzpzojge
-    // tutorial to set this up: https://youtu.be/4_NP_WYFmIM
-
-    if($userType == "admin"){
-        $password = "aaaaa";
-    }
-    else{
-        $user = emailExists($conn, $emailAddress, $location, $userType);
-        $password = $user["Password"];
-    }
-
-    $subject = "CPMS - Recover Password";
-    $headers = "From: cpms_noreply_test@yahoo.com";
-    $message = "Your password for your " . $userType . " account is " . $password;
-    if(mail($emailAddress, $subject, $message, $headers)){
-        header("location: ../login.php?passwordSent");
-    }
-    else{
-        header("location: ../forgotPassword.php?error=unableToSend");
-    }
-}
 
 
+
+
+// creates paper entity
 function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
         $fileExtension, $noteToReviewers, $topicsArray, $otherDescription, $file, $destination){
     
@@ -470,15 +451,6 @@ function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
     }
 }
 
-function isChecked($topic){
-    if($topic == 1){
-        return "checked";
-    }
-    else{
-        return "";
-    }
-}
-
 function createReviewRow($conn, $paperID, $reviewerID){
     $statement = mysqli_stmt_init($conn);
     $insert_query = "INSERT INTO review (PaperID, ReviewerID) VALUES (?, ?);";
@@ -488,8 +460,7 @@ function createReviewRow($conn, $paperID, $reviewerID){
     }
     mysqli_stmt_bind_param($statement, "ii", $paperID, $reviewerID);
     mysqli_stmt_execute($statement);
-    mysqli_stmt_close($statement);
-    
+    mysqli_stmt_close($statement);   
 }
 
 function updateRow($conn, $primaryID, $idType, $cols, $vals, $tableName, $redirectLink){
@@ -506,26 +477,16 @@ function updateRow($conn, $primaryID, $idType, $cols, $vals, $tableName, $redire
     return true;
 }
 
-function phoneNumberExists($conn, $phoneNumber, $location, $userType){
-    $result;
-    $statement = mysqli_stmt_init($conn);
-
-    $check_query = "SELECT * FROM $userType WHERE PhoneNumber = ?;";
-    if(!mysqli_stmt_prepare($statement, $check_query)){
-        header("location: " . $location . "?error=stmtfailed" );
-        exit();
-    }
-    mysqli_stmt_bind_param($statement, "s", $phoneNumber);
-    mysqli_stmt_execute($statement);
-
-    $resultStmt = mysqli_stmt_get_result($statement);
-
-    if($row = mysqli_fetch_assoc($resultStmt)){
-        return $row;
+function isChecked($topic){
+    if($topic == 1){
+        return "checked";
     }
     else{
-        $result = false;
-        return $result;
+        return "";
     }
-    mysqli_stmt_close($statement);
 }
+
+
+
+
+
