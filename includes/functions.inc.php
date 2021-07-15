@@ -123,6 +123,12 @@ function userExists($conn, $userID, $location, $userType){
     elseif($userType == "reviewer"){
         $column = "ReviewerID";
     }
+    elseif($userType == "paper"){
+        $column = "PaperID";
+    }
+    elseif($userType == "review"){
+        $column == "ReviewID";
+    }
 
     $check_query = "SELECT * FROM $userType WHERE $column = ?;";
     if(!mysqli_stmt_prepare($statement, $check_query)){
@@ -317,12 +323,18 @@ function emptyInputLogin($emailAddress, $password, $accountType)
 
 function userLogin($conn, $emailAddress, $password, $accountType){
     // admin credentials are hardcoded
+    // email = cpms_noreply_test@yahoo.com
+    // password = aaaaa
     if ($accountType == "admin"){
         if($emailAddress == "cpms_noreply_test@yahoo.com" && $password == "aaaaa"){
             session_start();
             $_SESSION["userID"] = "99999";
             $_SESSION["userType"] = "admin";
             header("location: ../adminPages/adminHome.php?login=success");
+        }
+        elseif($emailAddress != "cpms_noreply_test@yahoo.com" || $password != "aaaaa"){
+            header("location:../login.php?error=invalidCredentials");
+            exit();
         }
     }
     else{   /* for either author or reviewer log in */
@@ -383,7 +395,7 @@ function recoverPassword($conn, $emailAddress, $userType, $location){
 
 function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
         $fileExtension, $noteToReviewers, $topicsArray, $otherDescription, $file, $destination){
-
+    
     $statement = mysqli_stmt_init($conn);
     $insert_query = "INSERT INTO paper (AuthorID, FilenameOriginal, Filename, Title, Certification, NotesToReviewers,
                     AnalysisOfAlgorithms, Applications, Architecture, ArtificialIntelligence, 
@@ -443,7 +455,12 @@ function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
     );
 
     mysqli_stmt_execute($statement);
+    if($statement->error){
+        header("location: ../authorPages/submitPaper.php?error=queryfailed");
+        exit();
+    }
     mysqli_stmt_close($statement);
+
     if(move_uploaded_file($file, $destination)){
         header("location: ../authorPages/authorHome.php?uploadSuccess");
     }
@@ -460,4 +477,55 @@ function isChecked($topic){
     else{
         return "";
     }
+}
+
+function createReviewRow($conn, $paperID, $reviewerID){
+    $statement = mysqli_stmt_init($conn);
+    $insert_query = "INSERT INTO review (PaperID, ReviewerID) VALUES (?, ?);";
+    if(!mysqli_stmt_prepare($statement, $insert_query)){
+        header("location: ../adminPages/toAssignReviewer.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($statement, "ii", $paperID, $reviewerID);
+    mysqli_stmt_execute($statement);
+    mysqli_stmt_close($statement);
+    
+}
+
+function updateRow($conn, $primaryID, $idType, $cols, $vals, $tableName, $redirectLink){
+    $pairs = array();
+    foreach($cols as $key=>$value){
+        array_push($pairs, $value."='".$vals[$key]."'");
+    }
+    $str = implode(", ", $pairs);
+    $query = "UPDATE $tableName SET $str WHERE $idType='$primaryID';";
+    if(!mysqli_query($conn, $query)){
+        header("location: ".$redirectLink."?error=stmtfailed");
+        exit();
+    }
+    return true;
+}
+
+function phoneNumberExists($conn, $phoneNumber, $location, $userType){
+    $result;
+    $statement = mysqli_stmt_init($conn);
+
+    $check_query = "SELECT * FROM $userType WHERE PhoneNumber = ?;";
+    if(!mysqli_stmt_prepare($statement, $check_query)){
+        header("location: " . $location . "?error=stmtfailed" );
+        exit();
+    }
+    mysqli_stmt_bind_param($statement, "s", $phoneNumber);
+    mysqli_stmt_execute($statement);
+
+    $resultStmt = mysqli_stmt_get_result($statement);
+
+    if($row = mysqli_fetch_assoc($resultStmt)){
+        return $row;
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($statement);
 }
