@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "admin")))
+        // header("location: ../login.php?error=invalidAccess");
+        echo "<script>alert('Unauthorized Access. Please log in to your account first.'); window.location = '../../login.php';</script>";
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,20 +13,21 @@
     <meta name="viewport" content="width=device-width" , initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../style.css" type="text/css">
+    <?php require_once "../../includes/dbh.inc.php"; ?>
     <title>Admin - Reviews Summary</title>
 </head>
 
 <body>
     <header>
-        <a href="../adminHome.html" class="logo">
+        <a href="../adminHome.php" class="logo">
             <img src="../../images/logo1.png" alt="CCMC Midwest">
         </a>
         <ul class="navigation">
-            <li><a href="../adminHome.html">HOME</a></li>
-            <li><a href="../adminMaintain.html">ADMIN</a></li>
-            <li><a href="../adminReports.html" style="background-color: white; color: black;">
+            <li><a href="../adminHome.php">HOME</a></li>
+            <li><a href="../adminManage.php">ADMIN</a></li>
+            <li><a href="../adminReports.php" style="background-color: white; color: black;">
                     REPORTS</a></li>
-            <li><a href="">LOGOUT</a></li>
+            <li><a href="../../includes/logout.inc.php">LOGOUT</a></li>
         </ul>
     </header>
     <main>
@@ -26,8 +35,8 @@
             <!--Main page elements here-->
             <div class="second-nav">
                 <ul class="breadcrumb">
-                    <li><a href="../adminHome.html">Home</a></li>
-                    <li><a href="../adminReports.html">Reports</a></li>
+                    <li><a href="../adminHome.php">Home</a></li>
+                    <li><a href="../adminReports.php">Reports</a></li>
                     <li>Reviews Summary</li>
                 </ul>
             </div>
@@ -81,7 +90,6 @@
                             </tr>
                             <?php
                             // Create connection
-                            $mysqli = new mysqli('127.0.0.1:3306', 'root', 'donkeys', 'CPMS') or die($mysqli->error());
                             $sql = "SELECT  paper.Title, 
                                             review.AppropriatenessOfTopic,
                                              review.TimelinessOfTopic,
