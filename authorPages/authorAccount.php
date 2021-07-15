@@ -26,7 +26,7 @@
         </a>
         <ul class="navigation">
             <li><a href="authorHome.php">HOME</a></li>
-            <?php if(!isset($_SESSION["paperSubmitted"])){
+            <?php if(!isset($_SESSION["paperSubmitted"]) && !isset($_SESSION["submissionOff"])){
                 echo "<li><a href=\"submitPaper.php\">SUBMIT PAPER</a></a></li>";
             }?>
             <li><a href="authorAccount.php" style="background-color: white; color: black;">

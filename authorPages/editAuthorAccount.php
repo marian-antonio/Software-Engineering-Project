@@ -40,7 +40,7 @@
             <div class="second-nav">
                 <ul class="breadcrumb">
                     <li><a href="authorHome.php">Home</a></li>
-                    <?php if((!isset($_SESSION["paperSubmitted"])) || !isset($_SESSION["submissionOff"])){
+                    <?php if((!isset($_SESSION["paperSubmitted"])) && !isset($_SESSION["submissionOff"])){
                         echo "<li><a href=\"submitPaper.php\">SUBMIT PAPER</a></a></li>";
                     }?>
                     <li><a href="authorAccount.php">Current Account Details</a></li>

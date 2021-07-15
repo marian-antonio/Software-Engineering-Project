@@ -44,7 +44,7 @@
         </a>
         <ul class="navigation">
             <li><a href="authorHome.php" style="background-color: white; color: black;">HOME</a></li>
-            <?php if((!isset($_SESSION["paperSubmitted"])) || !isset($_SESSION["submissionOff"])){
+            <?php if((!isset($_SESSION["paperSubmitted"])) && !isset($_SESSION["submissionOff"])){
                 echo "<li><a href=\"submitPaper.php\">SUBMIT PAPER</a></a></li>";
             }?>
             <li><a href="authorAccount.php">YOUR ACCOUNT</a></li>
@@ -78,7 +78,7 @@
             <div class="actions">
                 <center><h1>What would you like to do?</h1></center>
                 <ul class="multiple-buttons">
-                    <?php if(!isset($_SESSION["paperSubmitted"]) || !isset($_SESSION["submissionOff"])){
+                    <?php if(!isset($_SESSION["paperSubmitted"]) && !isset($_SESSION["submissionOff"])){
                         echo "<li><a href=\"submitPaper.php\"><button>Submit Paper</button></a></li>";  
                     } else{
                         echo "<li><a><button disabled style=\"background-color: grey; color: black;\"
