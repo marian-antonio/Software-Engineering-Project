@@ -15,5 +15,5 @@ if(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "reviewer") && isset(
     exit();
 }
 else{
-    header("location: ../reviewerPages/toReview.php?error=invalidAccess");
+    echo "<script>alert('Unauthorized Access.'); window.location = '../reviewerPages/toReview.php?error=invalidAccess';</script>";
 }

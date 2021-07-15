@@ -49,5 +49,5 @@ if(($_SERVER["REQUEST_METHOD"] == "POST") && isset($_SESSION["userID"]) && ($_SE
     }
 }
 else{
-    header("location: ../authorPages/submitPaper.php?unauthorizedAccess");
+    echo "<script>alert('Unauthorized Access.'); window.location = '../authorPages/submitPaper.php';</script>";
 }

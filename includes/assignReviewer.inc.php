@@ -31,5 +31,5 @@ if(isset($_POST["assignReviewersSubmit"]) && isset($_SESSION["userID"]) && ($_SE
     }
 }
 else{
-    header("location: ../adminPages/toAssignReviewer.php?error=unauthorizedAccess");
+    echo "<script>alert('Unauthorized Access.'); window.location = '../adminPages/toAssignReviewer.php?error=unauthorizedAccess';</script>";
 }

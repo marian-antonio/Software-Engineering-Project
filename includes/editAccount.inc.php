@@ -47,9 +47,6 @@ if(isset($_SESSION["userID"]) && (isset($_POST["editAuthorAccount"]) || isset($_
 
     // error handling
     $errors = array();
-    if(invalidEmailAddress($emailAddress) !== false){
-        $errors['invalidEmail'] = "Invalid Email.";
-    }
     if(emailExists($conn, $emailAddress, $originalLocation, $userType) !== false){
         if($emailAddress != $currentEmail)
             $errors['emailExists'] = "The email address you entered is already registered. Please enter a different email address.";
@@ -74,15 +71,14 @@ if(isset($_SESSION["userID"]) && (isset($_POST["editAuthorAccount"]) || isset($_
         editAccountBasic($conn, $userID, $emailAddress, $password, $firstName, $middleInitial, $lastName, 
             $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $userType, $originalLocation);
         if($userType == "author"){
-            header("location: ../authorPages/authorAccount.php?editSuccess");
+            echo "<script>alert('Account successfully updated.'); window.location = '../authorPages/authorAccount.php';</script>";
         }
         elseif ($userType == "reviewer") {
             editTopics($conn, $userID, $topicsArray, $otherDescription);
-            header("location: ../reviewerPages/reviewerAccount.php?editSuccess");
+            echo "<script>alert('Account successfully updated.'); window.location = '../reviewerPages/reviewerAccount.php';</script>";
         }
-        unset($_SESSION['error']);
     }
 }
 else{
-    header("location: ../login.php?error=invalidAccess");
+    echo "<script>alert('Unauthorized Access.'); window.location = '../login.php?error=invalidAccess';</script>";
 }

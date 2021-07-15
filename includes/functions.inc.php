@@ -45,19 +45,7 @@ function userLogin($conn, $emailAddress, $password, $accountType){
     }
 }
 
-function emptyInputLogin($emailAddress, $password, $accountType)
-{
-    $result;
-    if(empty($emailAddress) || empty($password) || empty($accountType))
-    {
-        $result = true;
-    }
-    else{
-        $result = false;
-    }
-    return $result;
-}
-
+// used for verifying the user's email when trying to recover password
 function phoneNumberExists($conn, $phoneNumber, $location, $userType){
     $result;
     $statement = mysqli_stmt_init($conn);
@@ -300,6 +288,7 @@ function createReviewer($conn, $emailAddress, $password, $firstName,
     header("location: ../login.php?reviewerRegistration=success");
 }
 
+// updates the account when either an author or reviewer edits their account details
 function editAccountBasic($conn, $userID, $emailAddress, $password, $firstName, $middleInitial, $lastName, 
 $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $userType, $location){
     if($userType == "author"){
@@ -320,7 +309,7 @@ $affiliation, $department, $address, $city, $state, $zipCode, $phoneNumber, $use
             exit();
         }
         else{
-            
+            echo "<script>alert('Account successfully updated.'); window.location = '$location';</script>";
         } 
 }
 
@@ -363,6 +352,7 @@ function editTopics($conn, $userID, $topicsArray, $otherDescription){
             OtherDescription='$otherDescription'
             WHERE ReviewerID='$userID'";
     if(!mysqli_query($conn, $query)){
+        echo "<script>alert('Internal Error. Please try again later.'); window.location = '../reviewerPages/editReviewerAccount.php';</script>";
         header("location: ../reviewerPages/editReviewerAccount.php?error=queryFailTopics");
         exit();
     }
@@ -393,6 +383,7 @@ function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
                                 ?);";
 
     if(!mysqli_stmt_prepare($statement, $insert_query)){
+        echo "<script>alert('Internal Error. Please try again later.'); window.location = '../authorPages/submitPaper.php';</script>";
         header("location: ../authorPages/submitPaper.php?error=queryfailed");
         exit();
     }
@@ -437,15 +428,17 @@ function submitPaper($conn, $userID, $fileNameOriginal, $fileName, $paperTitle,
 
     mysqli_stmt_execute($statement);
     if($statement->error){
+        echo "<script>alert('Internal Error. Please try again later.'); window.location = '../authorPages/submitPaper.php';</script>";
         header("location: ../authorPages/submitPaper.php?error=queryfailed");
         exit();
     }
     mysqli_stmt_close($statement);
 
     if(move_uploaded_file($file, $destination)){
-        header("location: ../authorPages/authorHome.php?uploadSuccess");
+        echo "<script>alert('Successfully uploaded your paper!'); window.location = '../authorPages/authorHome.php';</script>";
     }
     else{
+        echo "<script>alert('Internal Error. Please try again later.'); window.location = '../authorPages/submitPaper.php';</script>";
         header("location: ../authorPages/submitPaper.php?error=uploadFail");
         exit();
     }
@@ -455,6 +448,7 @@ function createReviewRow($conn, $paperID, $reviewerID){
     $statement = mysqli_stmt_init($conn);
     $insert_query = "INSERT INTO review (PaperID, ReviewerID) VALUES (?, ?);";
     if(!mysqli_stmt_prepare($statement, $insert_query)){
+        echo "<script>alert('Internal Error. Please try again later.'); window.location = '../adminPages/toAssignReviewer.php';</script>";
         header("location: ../adminPages/toAssignReviewer.php?error=stmtfailed");
         exit();
     }
@@ -463,6 +457,9 @@ function createReviewRow($conn, $paperID, $reviewerID){
     mysqli_stmt_close($statement);   
 }
 
+// updates row by passing in rows as arguments
+// cols: table columns, vals: values to be posted
+// idType: ID you are comparing the primaryID to
 function updateRow($conn, $primaryID, $idType, $cols, $vals, $tableName, $redirectLink){
     $pairs = array();
     foreach($cols as $key=>$value){
@@ -471,12 +468,14 @@ function updateRow($conn, $primaryID, $idType, $cols, $vals, $tableName, $redire
     $str = implode(", ", $pairs);
     $query = "UPDATE $tableName SET $str WHERE $idType='$primaryID';";
     if(!mysqli_query($conn, $query)){
+        echo "<script>alert('Internal Error. Please try again later.'); window.location = '$redirectLink';</script>";
         header("location: ".$redirectLink."?error=stmtfailed");
         exit();
     }
     return true;
 }
 
+// used to recheck the active topics in the database when editing the topics for reviewer or paper
 function isChecked($topic){
     if($topic == 1){
         return "checked";

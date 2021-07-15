@@ -28,12 +28,8 @@ if(isset($_POST['submitReviewButton']) && isset($_SESSION["userID"]) && ($_SESSI
     $comfortLevelTopic = mysqli_real_escape_string($conn, $_POST['comfortLevelTopic']);
     $comfortLevelAcceptability = mysqli_real_escape_string($conn, $_POST['comfortLevelAcceptability']);
     
-
-
     $errors = array();
-    /************************************
-        add any input validation here 
-    ************************************/
+
     if(sizeof($errors) > 0){
         $_SESSION['error'] = $errors;
         header("location: ../reviewerPages/reviewPage.php?error=input");
@@ -68,6 +64,6 @@ if(isset($_POST['submitReviewButton']) && isset($_SESSION["userID"]) && ($_SESSI
     }
 }
 else{
-    header("location: ../reviewerPages/toReview.php?error=ThisError");
+    echo "<script>alert('Unauthorized Access.'); window.location = '../reviewerPages/toReview.php';</script>";
 }
 
