@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION["userID"]) && (isset($_POST["editAuthorAccount"]) || isset($_POST["editReviewerAccount"]))){
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
-    $emailAddress = mysqli_real_escape_string($conn, $_POST['emailAddress']);
+    $emailAddress = strtolower(mysqli_real_escape_string($conn, $_POST['emailAddress']));
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $confirmPassword = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
