@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    if(!(isset($_SESSION["userID"]) and $_SESSION["userType"] == "author"))
-        header("location: ../login.php?error=invalidAccess");
+    if(!(isset($_SESSION["userID"])  && ($_SESSION["userType"] == "author")))
+        echo "<script>alert('Unauthorized Access.'); window.location = '../login.php?error=invalidAccess';</script>";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,9 @@
         </a>
         <ul class="navigation">
             <li><a href="authorHome.php">HOME</a></li>
-            <li><a href="submitPaper.php">SUBMIT PAPER</a></a></li>
+            <?php if(!isset($_SESSION["paperSubmitted"])){
+                echo "<li><a href=\"submitPaper.php\">SUBMIT PAPER</a></a></li>";
+            }?>
             <li><a href="authorAccount.php" style="background-color: white; color: black;">
                 YOUR ACCOUNT</a></li>
             <li><a href="../includes/logout.inc.php">LOGOUT</a></li>

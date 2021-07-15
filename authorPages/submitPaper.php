@@ -1,14 +1,14 @@
 <?php 
     session_start();
-    if(!(isset($_SESSION["userID"]) and $_SESSION["userType"] == "author"))
-        header("location: ../login.php?error=invalidAccess");
+    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "author")) || isset($_SESSION["paperSubmitted"]))
+        echo "<script>alert('Unauthorized Access.'); window.location = '../login.php?error=invalidAccess';</script>";
 ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <title>Author - Submit Papers</title>
@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="submit-container">
-                <form action="..\includes\submitPaper.inc.php" method="post" id="paperSubmissionForm" enctype="multipart/form-data">
+                <form action="../includes/submitPaper.inc.php" method="post" id="paperSubmissionForm" enctype="multipart/form-data">
                     <div class="upload-container">
                         <table>
                             <tr>
@@ -52,7 +52,8 @@
                             </tr>
                             <tr>
                                 <td><label for="paperTitle" style="margin-right: 20px;">Paper Title</label></td>
-                                <td><input type="text" id="paperTitle" name="paperTitle" placeholder="Paper Title" required></td>
+                                <td><input type="text" id="paperTitle" name="paperTitle" placeholder="Paper Title" 
+                                    pattern="[a-zA-Z0-9.,!? ]+" title="Allowed characters: A-Z a-z 0-9 . , ! ?" required></td>
                             </tr>
                             <tr>
                                 <td>Upload</td>                            
@@ -139,7 +140,7 @@
                                     <input type="hidden" id="artificialIntelligenceHidden" name="artificialIntelligence" value='0'>
                                     <input type="checkbox" id="artificialIntelligence" name="artificialIntelligence" value='1'>
                                 </td>
-                                <td><label for="ai">Artificial Intelligence</label></td>
+                                <td><label for="artificialIntelligence">Artificial Intelligence</label></td>
 
                                 <td>
                                     <input type="hidden" id="graphicsImageProcessingHidden" name="graphicsImageProcessing" value='0'>
@@ -159,7 +160,7 @@
                                     <input type="hidden" id="computerEngineeringHidden" name="computerEngineering" value='0'>
                                     <input type="checkbox" id="computerEngineering" name="computerEngineering" value='1'>
                                 </td>
-                                <td><label for="cpe">Computer Engineering</label></td>
+                                <td><label for="computerEngineering">Computer Engineering</label></td>
 
                                 <td>
                                     <input type="hidden" id="humanComputerInteractionHidden" name="humanComputerInteraction" value='0'>
@@ -304,7 +305,7 @@
                         <textarea name="otherDescription" form="paperSubmissionForm" placeholder="If other is selected, describe other topics here..."></textarea>
                         <br>
                     </div>
-                    <div class="submit-button"><button type="submit" name="submitPaper">SUBMIT PAPER</button></div>
+                    <div class="submit-button"><button type="submit" name="submitPaperButton">SUBMIT PAPER</button></div>
                 </form>                
             </div>
         </div>
