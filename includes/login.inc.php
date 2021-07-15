@@ -9,19 +9,11 @@ if (isset($_POST["loginButton"])){
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $accountType = mysqli_real_escape_string($conn, $_POST['accountType']);
 
-    $errors = array();
     // input validation
-    if (emptyInputLogin($emailAddress, $password, $accountType)){
-        $errors['emptyInput'] = "Please fill in email, password, and select account type!";
-    }
-
-    // if any errors were found, return to login page
-    if(sizeof($errors) > 0){
-        $_SESSION['error'] = $errors;
-        header("location: ../login.php?error=input");
+    if(empty($accountType)){
+        header("location: ../login.php?error=selectType");
         exit();
     }
-
     userLogin($conn, $emailAddress, $password, $accountType);
 }
 else{
