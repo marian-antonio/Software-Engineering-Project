@@ -1,7 +1,12 @@
+<?php 
+    session_start();
+    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "admin")))
+        echo "<script>alert('Unauthorized Access.'); window.location = '../../login.php';</script>";
+?>
+
 <!DOCTYPE html>
 <html>
 <?php
-    session_start();
     // Create connection
     include "../../includes/dbh.inc.php";
 
@@ -171,15 +176,16 @@
 
 <body>
     <header>
-        <a href="../adminHome.html" class="logo">
+        <a href="../adminHome.php" class="logo">
             <img src="../../images/logo1.png" alt="CCMC Midwest">
         </a>
         <ul class="navigation">
-            <li><a href="../adminHome.html">HOME</a></li>
-            <li><a href="../adminManage.html" style="background-color: white; color: black;">
-                    ADMIN</a></li>
-            <li><a href="../adminReports.html">REPORTS</a></li>
-            <li><a href="">LOGOUT</a></li>
+            <li><a href="../adminHome.php">HOME</a></li>
+            <li><a href="../adminManage.php" style="background-color: white; color: black;">
+                    MANAGE</a></li>
+            <li><a href="../adminReports.php">REPORTS</a></li>
+            <li><a href="../toAssignReviewer.php">ASSIGN REVIEWERS</a></li>
+            <li><a href="../../includes/logout.inc.php">LOGOUT</a></li>
         </ul>
     </header>
     <main>
@@ -188,8 +194,8 @@
             <!--Main page elements here-->
             <div class="second-nav">
                 <ul class="breadcrumb">
-                    <li><a href="../adminHome.html">Home</a></li>
-                    <li><a href="../adminManage.html">Manage</a></li>
+                    <li><a href="../adminHome.php">Home</a></li>
+                    <li><a href="../adminManage.php">Manage</a></li>
                     <li>Manage Authors</li>
                 </ul>
             </div>
