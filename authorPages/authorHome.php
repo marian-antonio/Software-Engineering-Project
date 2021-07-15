@@ -22,6 +22,15 @@
         if($result->num_rows > 0){
             $_SESSION["paperSubmitted"] = TRUE;
         }
+
+        $deadlineQuery = "SELECT * FROM defaults;";
+        $result = $conn-> query($deadlineQuery);
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()) :
+                if($row["EnabledAuthors"] == 0)
+                    $_SESSION["submissionOff"] = TRUE;
+            endwhile;
+        }
         
         $location = "../authorPages/editAuthorAccount.php";
         $row = userExists($conn, $userID, $location, "author");
@@ -35,7 +44,7 @@
         </a>
         <ul class="navigation">
             <li><a href="authorHome.php" style="background-color: white; color: black;">HOME</a></li>
-            <?php if(!isset($_SESSION["paperSubmitted"])){
+            <?php if((!isset($_SESSION["paperSubmitted"])) || !isset($_SESSION["submissionOff"])){
                 echo "<li><a href=\"submitPaper.php\">SUBMIT PAPER</a></a></li>";
             }?>
             <li><a href="authorAccount.php">YOUR ACCOUNT</a></li>
@@ -57,7 +66,11 @@
                 <?php if(!isset($_SESSION["paperSubmitted"])){
                     echo "Here, you can choose to submit your paper,
                     view your current account information, and modify your account information."; 
-                }else{
+                }
+                elseif(isset($_SESSION["submissionOff"])){
+                    echo "Submissions are now closed. However, you may still view or modify your current account information";
+                }
+                else{
                     echo "Your paper has been submitted! However, you may still view or modify your current account information"; 
                 }?>
                 </p>
@@ -65,7 +78,7 @@
             <div class="actions">
                 <center><h1>What would you like to do?</h1></center>
                 <ul class="multiple-buttons">
-                    <?php if(!isset($_SESSION["paperSubmitted"])){
+                    <?php if(!isset($_SESSION["paperSubmitted"]) || !isset($_SESSION["submissionOff"])){
                         echo "<li><a href=\"submitPaper.php\"><button>Submit Paper</button></a></li>";  
                     } else{
                         echo "<li><a><button disabled style=\"background-color: grey; color: black;\"
