@@ -33,6 +33,22 @@
              <h1 style="font-size: 20px;">
              Please enter your new password.
          </h1>
+         <!-- shows errors -->
+         <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if(strpos($fullUrl, "error=input")==true){
+                    echo "<h3 style='color: red; text-align: center;'>" . "Please fix following errors:" . "</h3> <br>";
+
+                    foreach ($_SESSION['error'] as $key=>$value){
+                        echo "<ul id=\"input-errors\"> 
+                            <li style='color: red; margin: 5px 30px;'> {$value} </li>
+                        </ul>";
+                    }
+                }
+                elseif(strpos($fullUrl, "error=unknown")==true)
+                    echo "<h3 style='color: red; text-align: center;'>" . "Unknown Error" . "</h3> <br>";
+                ?>
          <form action="includes/recoverPassword.inc.php" method="post">
                 <div class="forgot-password" style="width: 50%; margin-left: auto; margin-right: auto;">
                 <div class="input-box">
