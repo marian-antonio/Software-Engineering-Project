@@ -26,11 +26,15 @@ if(isset($_POST['forgotPassword'])){
     // checks if phone number and email exists
     $errors = array();
     if($accountType == "author" || $accountType == "reviewer"){
-        if(emailExists($conn, $emailAddress, $originalLocation, $accountType) == false){
+        $user = emailExists($conn, $emailAddress, $originalLocation, $accountType);
+        if($user == false){
             $errors['emailExists'] = "Could not find an account registered with the email address you entered.";
         }
         if(phoneNumberExists($conn, $phoneNumber, $originalLocation, $accountType) == false){
             $errors['phoneNumberExists'] = "Could not find an account registered with the phone number you entered.";
+        }
+        elseif($phoneNumber != $user["PhoneNumber"]){
+            $errors['numberMismatch'] = "Email Address is not associated with the Phone Number.";
         }
     }
 

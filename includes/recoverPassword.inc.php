@@ -29,7 +29,7 @@ if(isset($_POST['recoverPassword'])){
 
     if(sizeof($errors) > 0){
         $_SESSION['error'] = $errors;
-        header("location: ../recoverPassword.php?error=input");
+        header("location: ../forgotPassword.php?error=input");
         exit();
     }
     // if there are no errors, replaces password and proceeds to the login page
