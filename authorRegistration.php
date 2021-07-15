@@ -44,18 +44,23 @@
                     to create your <b>author</b> account.
                 </p> 
                 <hr><br>
+                <!-- Shows errors -->
                 <div class="errors">
-                    <?php
-                        if(isset($_SESSION['error'])){
-                            echo "<h3 style='color: red; text-align: center;'>" . "Please fix the following errors before proceeding:" . "</h3> <br>";
-                            
-                            foreach ($_SESSION['error'] as $key=>$value){
-                                echo "<ul id=\"input-errors\"> 
-                                    <li style='color: red; margin: 5px 30px;'> {$value} </li>
-                                </ul>";
-                            }
-                        }
-                    ?>
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if(strpos($fullUrl, "error=input")==true){
+                    echo "<h3 style='color: red; text-align: center;'>" . "Please fix following errors:" . "</h3> <br>";
+
+                    foreach ($_SESSION['error'] as $key=>$value){
+                        echo "<ul id=\"input-errors\"> 
+                            <li style='color: red; margin: 5px 30px;'> {$value} </li>
+                        </ul>";
+                    }
+                }
+                elseif(strpos($fullUrl, "error=unknown")==true)
+                    echo "<h3 style='color: red; text-align: center;'>" . "Unknown Error" . "</h3> <br>";
+                ?>
                 </div>
                 <div class="user-info">
                     <div class="input-box">
@@ -149,7 +154,7 @@
                     </div>
                     <div class="input-box">
                         <label for="phone">Phone Number</label> 
-                        <input type="text" id="phone" name="phoneNumber" placeholder="Format: 123-456-7890" required
+                        <input type="phone" id="phone" name="phoneNumber" placeholder="Format: 123-456-7890" required
                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must follow the format: 123-456-7890">
                     </div>
                     <?php
@@ -159,9 +164,8 @@
                     <button type="submit" name="registerAuthor">Complete Registration</button>
                 </div>
             </form>
-            <?php unset($_SESSION['error']); ?>
             <p style="text-align: right;">Already have an account? <a href="login.php">Log in</a></p>
         </div>
-    </main>    
+    </main>
 </body>
 </html>

@@ -46,17 +46,22 @@
                     to create your <b>reviewer</b> account.
                 </p> 
                 <hr><br>
+                <!-- Shows errors -->
                 <div class="errors">
                     <?php
-                        if(isset($_SESSION['error'])){
-                            echo "<h3 style='color: red; text-align: center;'>" . "Please fix the following errors before proceeding:" . "</h3> <br>";
-                            
-                            foreach ($_SESSION['error'] as $key=>$value){
-                                echo "<ul id=\"input-errors\"> 
-                                    <li style='color: red; margin: 5px 30px;'> {$value} </li>
-                                </ul>";
-                            }
+                    $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                    if(strpos($fullUrl, "error=input")==true){
+                        echo "<h3 style='color: red; text-align: center;'>" . "Please fix following errors:" . "</h3> <br>";
+
+                        foreach ($_SESSION['error'] as $key=>$value){
+                            echo "<ul id=\"input-errors\"> 
+                                <li style='color: red; margin: 5px 30px;'> {$value} </li>
+                            </ul>";
                         }
+                    }
+                    elseif(strpos($fullUrl, "error=unknown")==true)
+                        echo "<h3 style='color: red; text-align: center;'>" . "Unknown Error" . "</h3> <br>";
                     ?>
                 </div>
                 <div class="user-info">
@@ -242,7 +247,7 @@
                                         <input type="hidden" id="artificialIntelligenceHidden" name="artificialIntelligence" value='0'>
                                         <input type="checkbox" id="artificialIntelligence" name="artificialIntelligence" value='1'>
                                     </td>
-                                    <td><label for="ai">Artificial Intelligence</label></td>
+                                    <td><label for="artificialIntelligence">Artificial Intelligence</label></td>
 
                                     <td>
                                         <input type="hidden" id="graphicsImageProcessingHidden" name="graphicsImageProcessing" value='0'>
@@ -262,7 +267,7 @@
                                         <input type="hidden" id="computerEngineeringHidden" name="computerEngineering" value='0'>
                                         <input type="checkbox" id="computerEngineering" name="computerEngineering" value='1'>
                                     </td>
-                                    <td><label for="cpe">Computer Engineering</label></td>
+                                    <td><label for="computerEngineering">Computer Engineering</label></td>
 
                                     <td>
                                         <input type="hidden" id="humanComputerInteractionHidden" name="humanComputerInteraction" value='0'>
@@ -420,7 +425,6 @@
                     <button type="submit" name="registerReviewer">Complete Registration</button>
                 </div>
             </form>
-            <?php unset($_SESSION['error']); ?>
             <p style="text-align: right;">Already have an account? <a href="login.php">Log in</a></p>
         </div>
     </main>    

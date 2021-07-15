@@ -1,12 +1,7 @@
 <?php 
     session_start();
     if(isset($_SESSION["userID"])){
-        if ($_SESSION["userType"] == "author")
-            header("location: ../authorPages/authorHome.php");
-        elseif ($_SESSION["userType"] == "reviewer")
-            header("location: ../reviewerPages/reviewerHome.php");
-        elseif ($_SESSION["userType"] == "admin")
-            header("location: ../adminPages/adminHome.php");
+        echo "<script>alert('Unauthorized Access.'); window.location = 'login.php';</script>";
     }
 ?>
 
@@ -34,12 +29,34 @@
         <!--Main page elements here-->
         <div class="login-page" style="width: 70%;">
             <h1><big>Password Recovery</big></h1>
+            <!-- shows errors -->
+            <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if(strpos($fullUrl, "error=input")==true){
+                    echo "<h3 style='color: red; text-align: center;'>" . "Please fix following errors:" . "</h3> <br>";
+
+                    foreach ($_SESSION['error'] as $key=>$value){
+                        echo "<ul id=\"input-errors\"> 
+                            <li style='color: red; margin: 5px 30px;'> {$value} </li>
+                        </ul>";
+                    }
+                }
+                elseif(strpos($fullUrl, "error=unknown")==true)
+                    echo "<h3 style='color: red; text-align: center;'>" . "Unknown Error" . "</h3> <br>";
+                ?>
             <h1 style="font-size: 20px;">
-                Please enter your email, select your account type, and click 'Recover Password'. We will send your password to your email.
+                Please enter your email, your phone number, select your account type, and click 'Recover Password'. We will send your password to your email.
             </h1>
-            <form action="../includes/forgotPassword.inc.php" method="post">
+            <form action="includes/forgotPassword.inc.php" method="post">
                 <div class="forgot-password" style="width: 50%; margin-left: auto; margin-right: auto;">
+                 <label for="email">Email</label> 
                     <input type="email" id="email" name="emailAddress" placeholder="Enter Email Address" style="text-align: center;">
+                    <div class="input-box">
+                        <label for="phone">Phone Number</label> 
+                        <input type="text" id="phone" name="phoneNumber" placeholder="Format: 123-456-7890" required
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must follow the format: 123-456-7890">
+                    </div>
                     <div class="account-type">
                         <h2>Select Account Type:</h2>
                         <input type="radio" id="author" name="accountType" value="author">
@@ -49,7 +66,7 @@
                         <input type="radio" id="admin" name="accountType" value="admin">
                         <label for="admin">Admin</label>
                     </div>
-                    <button type="submit" name="recoverPassword">Recover Password</button>
+                    <button type="submit" name="forgotPassword">Recover Password</button>
                     <p style="color: #16254c;padding: 10px; text-align: right; font-size: 16px;">
                         Remember your password? <a href="login.php">Click here to Log in</a>
                     </p>

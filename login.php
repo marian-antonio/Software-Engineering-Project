@@ -47,6 +47,37 @@
                 ?>
             </p>
             <form action="includes/login.inc.php" method="post">
+                <!-- Shows errors and successful registration/password recovery -->
+                <?php
+                    $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                    if(strpos($fullUrl, "error=input")==true){
+                        echo "<h3 style='color: red; text-align: center;'>" . "Please fix following errors:" . "</h3> <br>";
+                        foreach ($_SESSION['error'] as $key=>$value){
+                            echo "<ul id=\"input-errors\"> 
+                                <li style='color: red; margin: 5px 30px;'> {$value} </li>
+                            </ul>";
+                        }
+                    }
+                    elseif(strpos($fullUrl, "error=unknown")==true)
+                        echo "<h3 style='color: red; text-align: center;'>" . "Unknown Error" . "</h3> <br>";
+
+                    elseif(strpos($fullUrl, "reviewerRegistration=success")==true)
+                        echo "<h3 style='color: green; text-align: center;'>" . "Reviewer Account Created, Please Log In" . "</h3> <br>";
+                    
+                    elseif(strpos($fullUrl, "authorRegistration=success")==true)
+                        echo "<h3 style='color: green; text-align: center;'>" . "Author Account Created, Please Log In" . "</h3> <br>";
+
+                    elseif(strpos($fullUrl, "recoverPassword=success")==true)
+                        echo "<h3 style='color: green; text-align: center;'>" . "Password successfully reset" . "</h3> <br>";
+
+                    elseif(strpos($fullUrl, "error=invalidCredentials")==true)
+                        echo "<h3 style='color: red; text-align: center;'>" . "Credentials are incorrect" . "</h3> <br>";
+                    elseif(strpos($fullUrl, "error=selectType")==true)
+                        echo "<h3 style='color: red; text-align: center;'>" . "Please select the account type you are logging in as." . "</h3> <br>";
+                
+                ?>
+
                 <div class="input-label"> Email </div>
                 <input type="email" name="emailAddress" placeholder ="Email Address" required pattern=".+\.[a-zA-Z]+"
                     title="Please enter a valid email address.">
