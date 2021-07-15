@@ -1,5 +1,7 @@
 <?php
 
+// change as needed to match your mysql credentials
+
 $dbServer = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -13,5 +15,5 @@ if(!$conn){
     die("Could not connect to database." . mysqli_connect_error());
 }
 else{
-    $mysqli = $conn;
+    $mysqli = $conn;    // can refer to connection as either $mysqli or $conn
 }
