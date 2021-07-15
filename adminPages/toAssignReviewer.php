@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "admin")))
-        header("location: ../login.php?error=invalidAccess");
+        echo "<script>alert('Unauthorized Access.'); window.location = '../login.php';</script>";
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +20,9 @@
         </a>
         <ul class="navigation">
             <li><a href="adminHome.php">HOME</a></li>
-            <li><a href="adminManage.php" style="background-color: white; color: black;">ADMIN</a></li>
+            <li><a href="adminManage.php">MANAGE</a></li>
             <li><a href="adminReports.php">REPORTS</a></li>
+            <li><a href="toAssignReviewer.php" style="background-color: white; color: black;" >ASSIGN REVIEWERS</a></li>
             <li><a href="../includes/logout.inc.php">LOGOUT</a></li>
         </ul>
     </header>
@@ -30,7 +31,6 @@
         <div class="second-nav">
             <ul class="breadcrumb">
                 <li><a href="adminHome.php">Home</a></li>
-                <li><a href="adminManage.php">Maintain</a></li>
                 <li>Papers to Assign</li>
             </ul>
         </div>
