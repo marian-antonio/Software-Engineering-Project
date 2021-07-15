@@ -293,10 +293,7 @@ main .alerts h3{
     color: red;
     text-align: center;
 }
-main .errors li{
-    color: red;
-    margin: 5px 30px;
-}
+
 
 /* Styles for all pages after log in/registration */
 
