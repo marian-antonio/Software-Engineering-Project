@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <title>Admin - Home</title>
@@ -38,10 +38,8 @@
                     <h1>Welcome, Admin!</h1>
                     <p>
                         Here, you can generate reports on the author, reviewers, and their reviews.
-                        You can also send reminders to authors or reviewers for upcoming deadlines,
-                        enable or disable paper and review submissions, and assign reviewers to papers.
+                        You can also assign reviewers to papers and enable or disable paper and review submissions.
                         The manage buttons allow you to add, modify, or delete data from the corresponding data tables.
-                       
                     </p>
                 </div>
                 <div class="actions">
@@ -50,7 +48,7 @@
                         <li><a href="adminReports.php"><button>Generate Reports</button></a></li>
                         <li><a href="adminManage.php"><button>Manage Tables</button></a></li>
                         <li><a href="toAssignReviewer.php"><button>Assign Reviewers</button></a></li>
-                        <li><a href=""><button>Enable/Disable Submissions</button></a></li>
+                        <li><a href="submissionControl.php"><button>Enable/Disable Submissions</button></a></li>
                     </ul>
                 </div>
             </div>
