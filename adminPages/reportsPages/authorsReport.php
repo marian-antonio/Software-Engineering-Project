@@ -1,8 +1,7 @@
 <?php 
     session_start();
     if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "admin")))
-        // header("location: ../login.php?error=invalidAccess");
-        echo "<script>alert('Unauthorized Access. Please log in to your account first.'); window.location = '../../login.php';</script>";
+        echo "<script>alert('Unauthorized Access.'); window.location = '../../login.php';</script>";
 ?>
 
 <!DOCTYPE html>
