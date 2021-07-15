@@ -281,8 +281,21 @@ main .topics table tr, .topics table td{
     padding-bottom: 10px;
 }
 
-main .errors{
-    padding: 15px;
+main .errors,
+main .alerts{
+    width: max-content;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+main .alerts h3{
+    color: red;
+    text-align: center;
+}
+main .errors li{
+    color: red;
+    margin: 5px 30px;
 }
 
 /* Styles for all pages after log in/registration */
@@ -419,7 +432,18 @@ main .data-table tr:hover a{
 main .data-table td:hover{
     border: 2px solid #16254C;
 }
+main .data-table label{
+    display: block;
+}
 
+main .data-table .overall-rating th:nth-child(1),
+    .overall-rating td:nth-child(1){
+    width: fit-content;
+}
+main .data-table .overall-rating th:nth-child(2),
+    .overall-rating td:nth-child(2){
+    width: 30%;
+}
 main .reports-container{
     width: 97%;
     height: auto;
@@ -508,8 +532,8 @@ main .account-details table td:first-child
     text-align: right;
 }
 
-
-main .actions a button{
+main .actions a button,
+.reviewer-selection button{
     text-decoration: none;
     background: #16254C;
     color: white;
@@ -521,7 +545,8 @@ main .actions a button{
     border-radius: 10px;
     font-weight: bold;
 }
-main .actions a button:hover{
+main .actions a button:hover,
+.reviewer-selection button:hover{
     background: #fbaf33;
     color: black;
     border: 3px solid black;
@@ -544,4 +569,42 @@ main button .fas{
 main button:hover .fas{
     color:black;
 }
+main .assign-reviewers{
+    margin-bottom: 50px;   
+}
+main .assign-reviewers .data-table td:hover{
+    border: none;
+}
+main .assign-reviewers .data-table td{
+    padding: 5px;
+}
+main .assign-reviewers .data-table button{
+    padding: 2px 5px;
+    background-color: #16254C;
+    color: white;
+    border-radius: 5px;
+}
+main .assign-reviewers .data-table button:hover:enabled{
+    background-color: #284286;
+    color: white;
+}
+main .assign-reviewers .data-table button:disabled{
+    color: grey;
+    background-color: none;
+}
+main .outside-container{
+    width: 80%;
+    margin: 20px auto;
+}
+main .outside-container .reviewer-selection .data-table table{
+    text-align: left;
+    padding: 5px 10px;
+    font-size: 17px;
+    margin: 20px;
+}
 
+main .outside-container .reviewer-selection .data-table td{
+    text-align: left;
+    padding: 5px 10px;
+    font-size: 17px;
+}
