@@ -27,7 +27,9 @@
         </a>
         <ul class="navigation">
             <li><a href="reviewerHome.php">HOME</a></li>
-            <li><a href="toReview.php">REVIEW A PAPER</a></li>
+            <?php if(!isset($_SESSION["submissionOff"])){
+                echo "<li><a href=\"toReview.php\">REVIEW A PAPER</a></a></li>";
+            }?>
             <li><a href="reviewerAccount.php" style="background-color: white; color: black;">
                 YOUR ACCOUNT</a></li>
             <li><a href="../includes/logout.inc.php">LOGOUT</a></li>

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "reviewer") && isset($_GET["id"])))
+    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "reviewer") && isset($_GET["id"])) || isset($_SESSION["submissionOff"]))
         echo "<script>alert('Unauthorized Access.'); window.location = '../login.php';</script>";
     
 ?>
