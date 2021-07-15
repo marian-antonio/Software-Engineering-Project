@@ -7,7 +7,6 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     require_once 'functions.inc.php';
 
     session_start();
-
     // receive data from registration forms
     $emailAddress = mysqli_real_escape_string($conn, $_POST['emailAddress']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -23,6 +22,7 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     $zipCode = mysqli_real_escape_string($conn, $_POST['zipCode']);
     $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
 
+    $emailAddress = strtolower($emailAddress);
     // reviewer input only
     if(isset($_POST["registerReviewer"])){
         // from functions.inc.php
@@ -54,7 +54,7 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
     $address, $city, $state, $zipCode, $phoneNumber) !== false){
         $errors['emptyInput'] = "Please fill in all input boxes.";
     }
-
+    
     if(invalidEmailAddress($emailAddress) !== false){
         $errors['invalidEmail'] = "Invalid Email.";
     }
@@ -87,15 +87,6 @@ if(isset($_POST["registerAuthor"]) || isset($_POST["registerReviewer"])){
         exit();
     }
     else{
-    /* TODO
-    - check if any boxes are checked
-    - phone number follows correct format
-    - middle initial only 1 char
-    - how to avoid code injection
-    - add error messages to appropriate parts
-    - add stmt error messages
-     */
-
     // user creation
         if (isset($_POST["registerAuthor"])){
             createAuthor($conn, $emailAddress, $password, $firstName, 

@@ -1,10 +1,11 @@
 <?php
 
-if(isset($_POST["submitPaper"])){
+session_start();
+
+
+if(($_SERVER["REQUEST_METHOD"] == "POST") && isset($_SESSION["userID"]) && ($_SESSION["userType"] == "author")){
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
-
-    session_start();
     
     $paperTitle = mysqli_real_escape_string($conn, $_POST['paperTitle']);
     $fileNameOriginal = $_FILES['paperUpload']["name"];
@@ -15,11 +16,15 @@ if(isset($_POST["submitPaper"])){
     if($topicsArray['other'] == 1){
         $otherDescription = mysqli_real_escape_string($conn, $_POST['otherDescription']);
     }
+    else{
+        $otherDescription = " ";
+    }
 
     // where files are stored locally so that reviewer can download later
     $file = $_FILES['paperUpload']['tmp_name'];
-    $destination = '../paperUploads/' . $fileName . "." . $fileExtension;
-
+    $fileName =  $fileName . "." . $fileExtension;
+    $destination = '../paperUploads/' . $fileName;
+    
     // input validation
     $errors = array();
     $ext = array('doc', 'pdf');     // valid file types
@@ -44,5 +49,5 @@ if(isset($_POST["submitPaper"])){
     }
 }
 else{
-    header("location: ../authorPages/submitPaper.php");
+    header("location: ../authorPages/submitPaper.php?unauthorizedAccess");
 }
