@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    if(!(isset($_SESSION["userID"]) and $_SESSION["userType"] == "reviewer"))
-        header("location: ../login.php?error=invalidAccess");
+    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "reviewer")))
+        echo "<script>alert('Unauthorized Access.'); window.location = '../login.php';</script>";
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <title>Reviewer - Account Details</title>
@@ -84,15 +84,38 @@
                     </tr>
                     <tr>
                         <td>Preferred Topics</td>  
-                        <td></td>
+                        <td>
+                            <?php
+                                $topics_array = array("AnalysisOfAlgorithms", "Applications", "Architecture", "ArtificialIntelligence", 
+                                    "ComputerEngineering", "Curriculum", "DataStructures", "DatabasesColumn", "DistancedLearning",
+                                    "DistributedSystems", "EthicalSocietalIssues", "FirstYearComputing", "GenderIssues", "GrantWriting", 
+                                    "GraphicsImageProcessing", "HumanComputerInteraction", "LaboratoryEnvironments", "Literacy", 
+                                    "MathematicsInComputing", "Multimedia", "NetworkingDataCommunications", "NonMajorCourses", 
+                                    "ObjectOrientedIssues", "OperatingSystems","ParallelProcessing", "Pedagogy", "ProgrammingLanguages", 
+                                    "Research", "Security", "SoftwareEngineering","SystemsAnalysisAndDesign", "UsingTechnologyInTheClassroom", 
+                                    "WebAndInternetProgramming", "OtherDescription");
+
+                                foreach($topics_array as $topic){
+                                    if($row[$topic] == 1 || $topic == "OtherDescription"){
+                                        if($row[$topic] == NULL  || $row[$topic] == " "){
+                                            continue;
+                                        }
+                                        $topic = preg_replace('/(?<!\ )[A-Z]/', ' $0', $topic);
+                                        echo "<ul id=\"preferred-topics\"> 
+                                                <li style=\"margin: 5px;\">
+                                                    {$topic}
+                                                </li>
+                                            </ul>";
+                                    }
+                                }
+                            ?>
+                        </td>
                     </tr>
                 </table>
                 <div class="actions">
                     <a href="editReviewerAccount.php"><button>Edit Account Details</button></a>
                 </div>
             </div>
-
-            
         </div>
     </main>
 </body>

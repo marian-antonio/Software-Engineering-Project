@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    if(!(isset($_SESSION["userID"]) and $_SESSION["userType"] == "reviewer"))
-        header("location: ../login.php?error=invalidAccess");
+    if(!(isset($_SESSION["userID"]) && ($_SESSION["userType"] == "reviewer")))
+        echo "<script>alert('Unauthorized Access.'); window.location = '../login.php';</script>";
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <title>Reviewer - Home</title>
